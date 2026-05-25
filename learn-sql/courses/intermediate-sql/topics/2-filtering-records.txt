@@ -1,0 +1,31 @@
+Learn about how you can filter numerical and textual data with SQL. Filtering is an important use for this language. You’ll learn how to use new keywords and operators to help you narrow down your query to get results that meet your desired criteria and gain a better understanding of NULL values and how to handle them.
+
+Filtering numbers
+50 XP
+Filtering results
+50 XP
+Using WHERE with numbers
+100 XP
+Using WHERE with text
+100 XP
+Multiple criteria
+50 XP
+Using AND
+100 XP
+Using OR
+100 XP
+Using BETWEEN
+100 XP
+Filtering text
+50 XP
+LIKE and NOT LIKE
+100 XP
+WHERE IN
+100 XP
+Combining filtering and selecting
+100 XP
+NULL values
+50 XP
+What does NULL mean?
+50 XP
+Practice with NULLs

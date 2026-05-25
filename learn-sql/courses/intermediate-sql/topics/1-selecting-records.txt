@@ -1,0 +1,24 @@
+In this first chapter, you’ll learn how to query a films database and select the data needed to answer questions about the movies and actors. You'll also understand how SQL code is executed and formatted.
+Querying a database
+
+50 XP
+Learning to COUNT()
+50 XP
+Practice with COUNT()
+100 XP
+SELECT DISTINCT
+100 XP
+Query execution
+50 XP
+Order of execution
+100 XP
+Debugging errors
+100 XP
+SQL style
+50 XP
+SQL best practices
+100 XP
+Formatting
+100 XP
+Non-standard fields
+50 XP

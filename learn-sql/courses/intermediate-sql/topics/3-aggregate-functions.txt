@@ -1,0 +1,22 @@
+SQL allows you to zoom in and out to better understand an entire dataset, its subsets, and its individual records. You'll learn to summarize data using aggregate functions and perform basic arithmetic calculations inside queries to gain insights into what makes a successful film.
+Summarizing data
+50 XP
+Aggregate functions and data types
+100 XP
+Practice with aggregate functions
+100 XP
+Summarizing subsets
+50 XP
+Combining aggregate functions with WHERE
+100 XP
+Using ROUND()
+100 XP
+ROUND() with a negative parameter
+100 XP
+Aliasing and arithmetic
+50 XP
+Using arithmetic
+50 XP
+Aliasing with functions
+100 XP
+Rounding results
