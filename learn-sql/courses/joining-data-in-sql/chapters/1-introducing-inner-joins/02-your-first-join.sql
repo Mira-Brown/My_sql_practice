@@ -1,0 +1,2 @@
+-- 02-your-first-join
+-- (lesson populated by instructor during teaching)

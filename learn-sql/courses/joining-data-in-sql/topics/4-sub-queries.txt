@@ -1,0 +1,62 @@
+Subqueries
+
+In this closing chapter, you’ll begin by investigating semi-joins and anti-joins. Next, you'll learn how to use nested queries. Last but not least, you’ll wrap up the course with some challenges!
+
+Subquerying with semi joins and anti joins
+50 XP
+Multiple WHERE clauses
+100 XP
+Semi join
+100 XP
+Diagnosing problems using anti join
+100 XP
+Subqueries inside WHERE and SELECT
+50 XP
+Subquery inside WHERE
+100 XP
+WHERE do people live?
+100 XP
+Subquery inside SELECT
+100 XP
+Subqueries inside FROM
+50 XP
+Subquery inside FROM
+100 XP
+Subquery challenge
+100 XP
+Final challenge
+100 XP
+The finish line
+50 XP
+Share
+Prerequisites
+Intermediate SQL
+resources
+Create Course Notes
+Your learnings in one place
+Countries
+Dataset
+Leaders
+Dataset
+Diagrams
+Dataset
+Course Glossary
+Dataset
+Part of These Tracks
+Associate Data Analyst
+Associate Data Engineer
+Associate Data Engineer
+Instructors
+profile picture of Maham Khan
+Maham Khan
+Lead Data Scientist, YouView TV
+
+Maham is a Data Scientist on a mission to make data skills accessible for everyone. She's worked on creating toolkits and exploring experimental applications of data science for urban analytics, disaster risk management, and climate change mitigation at the World Bank. She has a background in Experimental Psychology and Philosophy from the University of Oxford and Urban Data Science from NYU.
+
+Collaborators
+Amy Peterson
+Amy Peterson
+James Chapman
+James Chapman
+Izzy Weber
+Izzy Weber

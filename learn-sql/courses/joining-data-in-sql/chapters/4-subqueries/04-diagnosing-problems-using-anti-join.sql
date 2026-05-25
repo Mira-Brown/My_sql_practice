@@ -1,0 +1,2 @@
+-- 04-diagnosing-problems-using-anti-join
+-- (lesson populated by instructor during teaching)

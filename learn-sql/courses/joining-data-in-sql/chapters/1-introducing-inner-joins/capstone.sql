@@ -1,0 +1,2 @@
+-- capstone — 1-introducing-inner-joins
+-- (capstone brief populated by instructor at end of chapter)

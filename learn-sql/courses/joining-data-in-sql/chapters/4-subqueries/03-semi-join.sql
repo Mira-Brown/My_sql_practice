@@ -1,0 +1,2 @@
+-- 03-semi-join
+-- (lesson populated by instructor during teaching)

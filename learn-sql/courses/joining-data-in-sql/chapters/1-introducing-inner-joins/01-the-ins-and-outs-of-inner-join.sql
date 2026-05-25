@@ -1,0 +1,2 @@
+-- 01-the-ins-and-outs-of-inner-join
+-- (lesson populated by instructor during teaching)

@@ -1,0 +1,2 @@
+-- 03-joining-with-aliased-tables
+-- (lesson populated by instructor during teaching)

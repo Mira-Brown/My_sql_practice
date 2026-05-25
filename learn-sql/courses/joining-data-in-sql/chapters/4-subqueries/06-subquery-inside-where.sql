@@ -1,0 +1,2 @@
+-- 06-subquery-inside-where
+-- (lesson populated by instructor during teaching)

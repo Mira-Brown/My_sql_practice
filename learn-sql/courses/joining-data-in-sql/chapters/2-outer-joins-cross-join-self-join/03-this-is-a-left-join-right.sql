@@ -1,0 +1,2 @@
+-- 03-this-is-a-left-join-right
+-- (lesson populated by instructor during teaching)

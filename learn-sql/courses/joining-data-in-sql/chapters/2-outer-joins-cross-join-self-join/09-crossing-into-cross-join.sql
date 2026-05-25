@@ -1,0 +1,2 @@
+-- 09-crossing-into-cross-join
+-- (lesson populated by instructor during teaching)

@@ -1,0 +1,2 @@
+-- capstone — 2-outer-joins-cross-join-self-join
+-- (capstone brief populated by instructor at end of chapter)

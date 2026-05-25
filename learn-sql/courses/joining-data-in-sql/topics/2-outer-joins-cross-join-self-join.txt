@@ -1,0 +1,32 @@
+Outer Joins, Cross Joins and Self Joins
+
+After familiarizing yourself with inner joins, you will come to grips with different kinds of outer joins. Next, you will learn about cross joins. Finally, you will learn about situations in which you might join a table with itself.
+
+LEFT and RIGHT JOINs
+50 XP
+Remembering what is LEFT
+100 XP
+This is a LEFT JOIN, right?
+100 XP
+Building on your LEFT JOIN
+100 XP
+Is this RIGHT?
+100 XP
+FULL JOINs
+50 XP
+Comparing joins
+100 XP
+Chaining FULL JOINs
+100 XP
+Crossing into CROSS JOIN
+50 XP
+Histories and languages
+100 XP
+Choosing your join
+100 XP
+Self joins
+50 XP
+Comparing a country to itself
+100 XP
+All joins on deck
+100 XP

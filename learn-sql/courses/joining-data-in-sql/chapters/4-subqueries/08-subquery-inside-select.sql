@@ -1,0 +1,2 @@
+-- 08-subquery-inside-select
+-- (lesson populated by instructor during teaching)

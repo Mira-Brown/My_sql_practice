@@ -1,0 +1,2 @@
+-- 06-intersect
+-- (lesson populated by instructor during teaching)

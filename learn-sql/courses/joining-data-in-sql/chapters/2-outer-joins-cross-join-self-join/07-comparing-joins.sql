@@ -1,0 +1,2 @@
+-- 07-comparing-joins
+-- (lesson populated by instructor during teaching)

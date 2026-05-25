@@ -1,0 +1,2 @@
+-- 07-where-do-people-live
+-- (lesson populated by instructor during teaching)

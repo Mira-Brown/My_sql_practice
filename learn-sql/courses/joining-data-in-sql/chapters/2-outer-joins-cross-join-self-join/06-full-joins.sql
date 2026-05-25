@@ -1,0 +1,2 @@
+-- 06-full-joins
+-- (lesson populated by instructor during teaching)

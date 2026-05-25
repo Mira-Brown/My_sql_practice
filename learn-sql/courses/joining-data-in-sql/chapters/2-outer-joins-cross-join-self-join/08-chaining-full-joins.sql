@@ -1,0 +1,2 @@
+-- 08-chaining-full-joins
+-- (lesson populated by instructor during teaching)

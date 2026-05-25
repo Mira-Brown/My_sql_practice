@@ -1,0 +1,2 @@
+-- 09-subqueries-inside-from
+-- (lesson populated by instructor during teaching)

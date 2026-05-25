@@ -1,0 +1,25 @@
+
+Introducing Inner Joins
+
+In this chapter, you’ll be introduced to the concept of joining tables and will explore all the ways you can enrich your queries using joins—beginning with inner joins.
+
+The ins and outs of INNER JOIN
+50 XP
+Your first join
+100 XP
+Joining with aliased tables
+100 XP
+USING in action
+100 XP
+Defining relationships
+50 XP
+Relationships in our database
+100 XP
+Inspecting a relationship
+100 XP
+Multiple joins
+50 XP
+Joining multiple tables
+100 XP
+Checking multi-table joins
+100 XP

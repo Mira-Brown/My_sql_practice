@@ -1,0 +1,61 @@
+Set Theory for SQL Joins
+
+In this chapter, you will learn about using set theory operations in SQL, with an introduction to UNION, UNION ALL, INTERSECT, and EXCEPT clauses. You’ll explore the predominant ways in which set theory operations differ from join operations.
+Set theory for SQL Joins
+
+50 XP
+UNION vs. UNION ALL
+100 XP
+Comparing global economies
+100 XP
+Comparing two set operations
+100 XP
+At the INTERSECT
+50 XP
+INTERSECT
+100 XP
+Review UNION and INTERSECT
+50 XP
+EXCEPT
+50 XP
+You've got it, EXCEPT...
+100 XP
+Calling all set operators
+100 XP
+4
+Subqueries
+
+0%
+In this closing chapter, you’ll begin by investigating semi-joins and anti-joins. Next, you'll learn how to use nested queries. Last but not least, you’ll wrap up the course with some challenges!
+Share
+Prerequisites
+Intermediate SQL
+resources
+Create Course Notes
+Your learnings in one place
+Countries
+Dataset
+Leaders
+Dataset
+Diagrams
+Dataset
+Course Glossary
+Dataset
+Part of These Tracks
+Associate Data Analyst
+Associate Data Engineer
+Associate Data Engineer
+Instructors
+profile picture of Maham Khan
+Maham Khan
+Lead Data Scientist, YouView TV
+
+Maham is a Data Scientist on a mission to make data skills accessible for everyone. She's worked on creating toolkits and exploring experimental applications of data science for urban analytics, disaster risk management, and climate change mitigation at the World Bank. She has a background in Experimental Psychology and Philosophy from the University of Oxford and Urban Data Science from NYU.
+
+Collaborators
+Amy Peterson
+Amy Peterson
+James Chapman
+James Chapman
+Izzy Weber
+Izzy Weber

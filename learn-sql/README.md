@@ -1,16 +1,21 @@
-# Intermediate SQL — Student Guide
+# SQL courses — Student Guide
 
-A DataCamp-style, instructor-led SQL course you take through Claude Code. 4 chapters, 49 lessons, 3900 XP total, all run against a local SQLite database of ~5000 real films.
+DataCamp-style, instructor-led SQL courses you take through Claude Code. Each course runs against a local SQLite database. No internet, no signups.
+
+Two courses currently available:
+
+| # | Course | Lessons | XP | Dataset | Status |
+|---|---|---|---|---|---|
+| 1 | Intermediate SQL | 49 | 3900 | ~5000 films | ✅ complete |
+| 2 | Joining Data in SQL | 47 | 3950 | countries + leaders | 🟡 in progress |
 
 ---
 
 ## 1. What you need
 
-- **SQLite 3** installed (`sqlite3 --version` to check; ships with macOS)
-- **Claude Code** running in this workspace
-- A code editor (VS Code, Cursor, etc.) to edit lesson `.sql` files
-
-That's it. No internet, no signups, no paid tools.
+- **SQLite 3** installed (`sqlite3 --version` — ships with macOS)
+- **Claude Code** in this workspace
+- An editor to view/edit lesson `.sql` files
 
 ---
 
@@ -20,24 +25,36 @@ That's it. No internet, no signups, no paid tools.
 learn-sql/
 ├── README.md                              ← you are here
 ├── CLAUDE.md                              ← rules the instructor follows
-├── COURSE.md                              ← your progress tracker
-└── courses/intermediate-sql/
-    ├── topics/                            ← raw chapter spec (don't edit)
-    ├── csv/                               ← raw data (don't edit)
-    ├── database/
-    │   ├── intermediate-sql.db            ← the database you query
-    │   └── setup.sql                      ← rebuild script
-    ├── chapters/                          ← YOUR lesson files live here
-    │   ├── 1-selecting-records/
-    │   ├── 2-filtering-records/
-    │   ├── 3-aggregate-functions/
-    │   └── 4-sorting-and-grouping/
-    └── solutions/                         ← only filled if you fail 3 hints
+├── COURSE.md                              ← your progress tracker (all courses)
+└── courses/
+    ├── intermediate-sql/
+    │   ├── topics/                        ← raw chapter spec
+    │   ├── csv/                           ← raw data
+    │   ├── database/
+    │   │   ├── intermediate-sql.db
+    │   │   └── setup.sql
+    │   ├── chapters/                      ← lesson files
+    │   └── solutions/                     ← filled if you fail 3 hints
+    └── joining-data-in-sql/
+        ├── topics/
+        ├── csv/                           (countries/, leaders/)
+        ├── assets/                        (join diagrams — Venn, INNER/LEFT/RIGHT/FULL/CROSS, UNION, INTERSECT, EXCEPT, semi/anti)
+        ├── database/
+        │   ├── joining-data-in-sql.db
+        │   └── setup.sql
+        ├── chapters/
+        └── solutions/
 ```
 
 ---
 
-## 3. How to start a session
+## 3. Picking a course
+
+Open `COURSE.md` — first line shows **Active course**. Edit it to switch (e.g. `intermediate-sql` ↔ `joining-data-in-sql`), or tell the instructor "switch to joining-data-in-sql".
+
+---
+
+## 4. How to start a session
 
 In Claude Code, say:
 
@@ -45,178 +62,180 @@ In Claude Code, say:
 begin teaching
 ```
 
-The instructor will:
-1. Open the **current lesson** file (tracked in `COURSE.md`).
-2. Teach it (one of 3 formats below).
-3. Wait for your input before moving on.
+The instructor:
+1. Reads **Active course** from `COURSE.md`.
+2. Opens the **current lesson** file for that course.
+3. Teaches it. Waits for your input.
 
-To pick up later, just say `begin teaching` again — `COURSE.md` remembers where you stopped.
+To pick up later, say `begin teaching` again — `COURSE.md` remembers where you stopped per course.
 
 ---
 
-## 4. The 3 lesson types
-
-DataCamp uses three lesson formats. Same here.
+## 5. The 3 lesson types
 
 | Icon | XP | Type | What happens |
 |---|---|---|---|
-| ▶ | 50 | **Video** | Instructor writes 150–200 word concept explanation in chat, drops a runnable example in the lesson file, asks one comprehension question |
+| ▶ | 50 | **Video** | Instructor explains concept in chat (150–200 words), drops a runnable example in the lesson file, asks one comprehension question |
 | ☰ | 50 | **Theory** | Short reading + comprehension question |
 | `</>` | 100 | **Exercise** | You write the SQL yourself, instructor checks |
 
 ---
 
-## 5. Doing a Video or Theory lesson
+## 6. Doing a Video or Theory lesson
 
-1. Instructor explains the concept in chat.
-2. Open the lesson file (e.g. `chapters/1-selecting-records/01-querying-a-database.sql`).
-3. Read the example. Run it if you want:
-   ```bash
-   sqlite3 courses/intermediate-sql/database/intermediate-sql.db < courses/intermediate-sql/chapters/1-selecting-records/01-querying-a-database.sql
-   ```
-4. Answer the comprehension question in chat.
-5. XP awarded, `COURSE.md` updated, ✅ ticked.
+1. Instructor explains in chat.
+2. Open the lesson file (e.g. `chapters/1-introducing-inner-joins/01-the-ins-and-outs-of-inner-join.sql`).
+3. Read / run the example.
+4. Answer the comprehension question.
+5. XP awarded, `COURSE.md` updated.
 
 ---
 
-## 6. Doing an Exercise lesson
+## 7. Doing an Exercise lesson
 
-1. Instructor writes a brief at the top of the lesson file as comments, plus starter code with `-- TODO:` markers.
-2. **Your job:** fill in the TODOs. Save the file.
-3. When ready, type in chat:
-   ```
-   check it
-   ```
-4. Instructor runs your query against `intermediate-sql.db` and grades it.
+1. Instructor writes brief at top of lesson file (comments) + starter code with `-- TODO:` markers.
+2. You fill in the TODOs. Save.
+3. Type `check it` in chat.
+4. Instructor runs your query against the active DB and grades.
 
-### If you get stuck
+### Stuck?
 
-Type any of these in chat:
-
-- `hint` — instructor gives a conceptual nudge (e.g. "think about which keyword filters rows")
-- `hint 2` — instructor names the specific SQL keyword you're missing
-- `hint 3` — instructor shows query structure with blanks: `SELECT ___ FROM ___ WHERE ___`
-- After 3 hints fail, the instructor writes the answer to `solutions/<chapter>/<lesson>.sql` and walks you through it line by line. The mistake is logged in `COURSE.md` so you can review later.
-
-### If you nail it
-
-- ✅ confirmation in chat
-- One alternative approach shown (different syntax, different angle)
-- XP awarded
-- `COURSE.md` updated
-- Next lesson loaded
+- `hint` — conceptual nudge
+- `hint 2` — names the missing SQL keyword
+- `hint 3` — query skeleton with blanks
+- After 3 hints fail → instructor writes solution to `solutions/<chapter>/<lesson>.sql`, walks through it, logs the mistake in `COURSE.md`.
 
 ---
 
-## 7. Useful chat commands
+## 8. Useful chat commands
 
 | Say | Meaning |
 |---|---|
-| `begin teaching` | Start or resume the course |
-| `check it` | Submit your exercise for grading |
-| `hint`, `hint 2`, `hint 3` | Get progressively stronger hints |
-| `next` | Skip to next lesson (your XP for this one stays at 0) |
-| `redo` | Re-attempt the current lesson |
+| `begin teaching` | Start or resume the active course |
+| `switch to <course>` | Change active course |
+| `check it` | Submit your exercise |
+| `hint`, `hint 2`, `hint 3` | Progressively stronger hints |
+| `next` | Skip current lesson (0 XP) |
+| `redo` | Re-attempt current lesson |
 | `where am I` | Show current lesson + XP total |
 
 ---
 
-## 8. Running queries yourself
+## 9. Running queries yourself
 
-Open a terminal in this workspace.
-
-**Interactive shell:**
 ```bash
+# Intermediate SQL
 sqlite3 courses/intermediate-sql/database/intermediate-sql.db
+sqlite3 courses/intermediate-sql/database/intermediate-sql.db < path/to/file.sql
+sqlite3 courses/intermediate-sql/database/intermediate-sql.db "SELECT COUNT(*) FROM films;"
+
+# Joining Data in SQL
+sqlite3 courses/joining-data-in-sql/database/joining-data-in-sql.db
+sqlite3 courses/joining-data-in-sql/database/joining-data-in-sql.db < path/to/file.sql
+sqlite3 courses/joining-data-in-sql/database/joining-data-in-sql.db "SELECT COUNT(*) FROM countries;"
 ```
+
 Inside the shell:
 ```
-.tables           -- list tables
-.schema films     -- show CREATE for one table
+.tables
+.schema countries
 .headers on
 .mode column
-SELECT * FROM films LIMIT 5;
+SELECT * FROM countries LIMIT 5;
 .quit
-```
-
-**Run a `.sql` file:**
-```bash
-sqlite3 courses/intermediate-sql/database/intermediate-sql.db < path/to/file.sql
-```
-
-**One-off query:**
-```bash
-sqlite3 courses/intermediate-sql/database/intermediate-sql.db "SELECT COUNT(*) FROM films;"
 ```
 
 ---
 
-## 9. The database
+## 10. The databases
 
-One file: `courses/intermediate-sql/database/intermediate-sql.db`. Four tables.
-
+### `intermediate-sql.db` — films
 ```
 films (4968)   ─< roles (19791) >─  people (8397)
    │
    └────  reviews (4968, 1:1 by film_id)
 ```
+- **films** — `id`, `title`, `release_year`, `country`, `duration`, `language`, `certification`, `gross`, `budget`
+- **people** — `id`, `name`, `birthdate`, `deathdate`
+- **reviews** — `film_id`, `num_user_reviews`, `num_critic_reviews`, `imdb_score`, `num_votes`, `facebook_likes`
+- **roles** — `id`, `film_id`, `person_id`, `role` (`'actor'` / `'director'`)
 
-- **`films`** — `id`, `title`, `release_year`, `country`, `duration`, `language`, `certification`, `gross`, `budget`
-- **`people`** — `id`, `name`, `birthdate`, `deathdate`
-- **`reviews`** — `film_id`, `num_user_reviews`, `num_critic_reviews`, `imdb_score`, `num_votes`, `facebook_likes`
-- **`roles`** — `id`, `film_id`, `person_id`, `role` (`'actor'` or `'director'` only)
+### `joining-data-in-sql.db` — countries + leaders
+**Countries dataset** (joined on `countries.code`):
+- **countries** (205) — `code` PK, `name`, `continent`, `region`, `surface_area`, `indep_year`, `local_name`, `gov_form`, `capital`, `cap_long`, `cap_lat`
+- **cities** (236) — `name` PK, `country_code` FK, `city_proper_pop`, `metroarea_pop`, `urbanarea_pop`
+- **languages** (955) — `lang_id` PK, `code` FK, `name`, `percent`, `official`
+- **economies** (380) — `econ_id` PK, `code` FK, `year`, `income_group`, `gdp_percapita`, `gross_savings`, `inflation_rate`, `total_investment`, `unemployment_rate`, `exports`, `imports`
+- **currencies** (224) — `curr_id` PK, `code` FK, `basic_unit`, `curr_code`, `frac_unit`, `frac_perbasic`
+- **populations** (434) — `pop_id` PK, `country_code` FK, `year`, `fertility_rate`, `life_expectancy`, `size`
+- **economies2015** (166) / **economies2019** (151) — `code` PK, `year`, `income_group`, `gross_savings`
+- **eu_countries** (27) — `code` PK, `name`
 
-Empty CSV cells loaded as `NULL`. Get used to filtering `WHERE col IS NOT NULL` — chapter 2 covers it.
+**Leaders dataset** (used in set theory + subquery chapters):
+- **states** (11) — `country` PK, `continent`, `indep_year`
+- **monarchs** (4) — `country` PK, `continent`, `monarch`
+- **presidents** (7) — `country` PK, `continent`, `president`
+- **prime_ministers** (10) — `country` PK, `continent`, `prime_minister`
+- **prime_minister_terms** (10) — `prime_minister`, `pm_start`
 
-### If you break the database
+### Rebuilding a DB
 
-Rebuild from scratch:
 ```bash
+# intermediate-sql
 cd courses/intermediate-sql/database
 rm -f intermediate-sql.db
 sqlite3 intermediate-sql.db < setup.sql
+
+# joining-data-in-sql
+cd courses/joining-data-in-sql/database
+rm -f joining-data-in-sql.db
+sqlite3 joining-data-in-sql.db < setup.sql
 ```
 
-You'll see row counts confirming all 4 tables loaded.
+Row-count summary prints after each rebuild — verify all tables loaded.
 
 ---
 
-## 10. Progress tracking
+## 11. Course outlines
 
-Open `COURSE.md` any time. It shows:
-
-- A checklist of all 49 lessons across 4 chapters
-- XP earned vs. total (e.g. `XP earned: 350 / 3900`)
-- Current lesson pointer
-- Mistakes log — every exercise where you needed all 3 hints, with the lesson and what tripped you up
-
-The instructor updates this **after every lesson**. Don't edit it by hand mid-session — let the instructor manage it.
-
----
-
-## 11. Course outline
-
+### Intermediate SQL (49 lessons, 3900 XP)
 | Ch | Title | Lessons | XP |
 |---|---|---|---|
 | 1 | Selecting records | 11 | 850 |
 | 2 | Filtering records | 15 | 1200 |
 | 3 | Aggregate functions | 11 | 900 |
 | 4 | Sorting and grouping | 12 | 950 |
-| | **Total** | **49** | **3900** |
 
-Each chapter ends with a **capstone** project (`capstone.sql`) — a realistic analysis brief combining everything from that chapter. Every 3 exercise lessons, you may get a mini-challenge that combines them.
+### Joining Data in SQL (47 lessons, 3950 XP)
+| Ch | Title | Lessons | XP |
+|---|---|---|---|
+| 1 | Introducing Inner Joins | 10 | 850 |
+| 2 | Outer Joins, Cross Joins and Self Joins | 14 | 1200 |
+| 3 | Set Theory for SQL Joins | 10 | 800 |
+| 4 | Subqueries | 13 | 1100 |
+
+Each chapter ends with a **capstone** (`chapters/<N>-<name>/capstone.sql`) — a realistic analysis brief combining everything in that chapter.
 
 ---
 
-## 12. Tips
+## 12. Progress tracking
 
-- **Don't peek at `solutions/`** unless you've already exhausted 3 hints. Robs the learning.
-- **Run queries often** — SQL is a feedback-loop language. Tiny tweaks, re-run, see what changes.
-- **Real data is messy.** NULLs, weird capitalization, duplicate names. Embrace it; chapters 2 and 4 are partly about exactly this.
-- **Type-check yourself.** Before saying `check it`, run the query yourself. If it errors, fix the error first.
-- **Style matters from chapter 1.** Keywords in UPPERCASE, identifiers in lowercase, one clause per line. The instructor will nudge you on this.
+Open `COURSE.md` any time. Per course: lesson checklist, XP earned vs. total, current lesson pointer, mistakes log. Instructor updates after every lesson — don't hand-edit mid-session.
+
+---
+
+## 13. Tips
+
+- **Don't peek at `solutions/`** until you've burned 3 hints.
+- **Run queries often** — SQL is a feedback-loop language.
+- **Real data is messy.** NULLs, weird capitalization, duplicates. Embrace.
+- **Type-check yourself.** Run your query before saying `check it`.
+- **Style matters.** Keywords UPPERCASE, identifiers lowercase, one clause per line.
 
 Good luck. Start with `begin teaching`.
 
-## Start SQL Shell
+## Start SQL shells
+```bash
 sqlite3 courses/intermediate-sql/database/intermediate-sql.db
+sqlite3 courses/joining-data-in-sql/database/joining-data-in-sql.db
+```

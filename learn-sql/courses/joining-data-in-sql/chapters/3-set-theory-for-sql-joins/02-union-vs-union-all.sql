@@ -1,0 +1,2 @@
+-- 02-union-vs-union-all
+-- (lesson populated by instructor during teaching)

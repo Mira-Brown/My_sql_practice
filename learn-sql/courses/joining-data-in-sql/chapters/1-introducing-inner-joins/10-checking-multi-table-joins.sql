@@ -1,0 +1,2 @@
+-- 10-checking-multi-table-joins
+-- (lesson populated by instructor during teaching)

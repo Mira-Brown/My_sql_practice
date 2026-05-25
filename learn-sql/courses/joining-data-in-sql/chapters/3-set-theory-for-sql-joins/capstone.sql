@@ -1,0 +1,2 @@
+-- capstone — 3-set-theory-for-sql-joins
+-- (capstone brief populated by instructor at end of chapter)

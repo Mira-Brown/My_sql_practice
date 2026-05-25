@@ -1,0 +1,2 @@
+-- 10-calling-all-set-operators
+-- (lesson populated by instructor during teaching)

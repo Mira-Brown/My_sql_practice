@@ -1,0 +1,2 @@
+-- 04-comparing-two-set-operations
+-- (lesson populated by instructor during teaching)
