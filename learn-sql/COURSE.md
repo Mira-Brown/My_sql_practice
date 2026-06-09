@@ -78,68 +78,68 @@ _(empty)_
 
 # Course 2: Joining Data in SQL
 
-**XP earned: 0 / 3950**
+**XP earned: 3950 / 3950**
 
-**Current lesson:** Chapter 1 · Lesson 1 — The ins and outs of INNER JOIN ▶
+**Current lesson:** Course complete 🎓
 
-## Chapter 1 — Introducing Inner Joins (0 / 850 XP)
-- [ ] 1. The ins and outs of INNER JOIN — 50 XP ▶
-- [ ] 2. Your first join — 100 XP `</>`
-- [ ] 3. Joining with aliased tables — 100 XP `</>`
-- [ ] 4. USING in action — 100 XP `</>`
-- [ ] 5. Defining relationships — 50 XP ▶
-- [ ] 6. Relationships in our database — 100 XP `</>`
-- [ ] 7. Inspecting a relationship — 100 XP `</>`
-- [ ] 8. Multiple joins — 50 XP ▶
-- [ ] 9. Joining multiple tables — 100 XP `</>`
-- [ ] 10. Checking multi-table joins — 100 XP `</>`
-- [ ] **Capstone — Chapter 1**
+## Chapter 1 — Introducing Inner Joins (850 / 850 XP) ✅
+- [x] 1. The ins and outs of INNER JOIN — 50 XP ▶
+- [x] 2. Your first join — 100 XP `</>`
+- [x] 3. Joining with aliased tables — 100 XP `</>`
+- [x] 4. USING in action — 100 XP `</>`
+- [x] 5. Defining relationships — 50 XP ▶
+- [x] 6. Relationships in our database — 100 XP `</>`
+- [x] 7. Inspecting a relationship — 100 XP `</>`
+- [x] 8. Multiple joins — 50 XP ▶
+- [x] 9. Joining multiple tables — 100 XP `</>`
+- [x] 10. Checking multi-table joins — 100 XP `</>`
+- [x] **Capstone — Chapter 1**
 
-## Chapter 2 — Outer Joins, Cross Joins and Self Joins (0 / 1200 XP)
-- [ ] 1. LEFT and RIGHT JOINs — 50 XP ▶
-- [ ] 2. Remembering what is LEFT — 100 XP `</>`
-- [ ] 3. This is a LEFT JOIN, right? — 100 XP `</>`
-- [ ] 4. Building on your LEFT JOIN — 100 XP `</>`
-- [ ] 5. Is this RIGHT? — 100 XP `</>`
-- [ ] 6. FULL JOINs — 50 XP ▶
-- [ ] 7. Comparing joins — 100 XP `</>`
-- [ ] 8. Chaining FULL JOINs — 100 XP `</>`
-- [ ] 9. Crossing into CROSS JOIN — 50 XP ▶
-- [ ] 10. Histories and languages — 100 XP `</>`
-- [ ] 11. Choosing your join — 100 XP `</>`
-- [ ] 12. Self joins — 50 XP ▶
-- [ ] 13. Comparing a country to itself — 100 XP `</>`
-- [ ] 14. All joins on deck — 100 XP `</>`
-- [ ] **Capstone — Chapter 2**
+## Chapter 2 — Outer Joins, Cross Joins and Self Joins (1200 / 1200 XP) ✅
+- [x] 1. LEFT and RIGHT JOINs — 50 XP ▶
+- [x] 2. Remembering what is LEFT — 100 XP `</>`
+- [x] 3. This is a LEFT JOIN, right? — 100 XP `</>`
+- [x] 4. Building on your LEFT JOIN — 100 XP `</>`
+- [x] 5. Is this RIGHT? — 100 XP `</>`
+- [x] 6. FULL JOINs — 50 XP ▶
+- [x] 7. Comparing joins — 100 XP `</>`
+- [x] 8. Chaining FULL JOINs — 100 XP `</>`
+- [x] 9. Crossing into CROSS JOIN — 50 XP ▶
+- [x] 10. Histories and languages — 100 XP `</>`
+- [x] 11. Choosing your join — 100 XP `</>`
+- [x] 12. Self joins — 50 XP ▶
+- [x] 13. Comparing a country to itself — 100 XP `</>`
+- [x] 14. All joins on deck — 100 XP `</>`
+- [x] **Capstone — Chapter 2**
 
-## Chapter 3 — Set Theory for SQL Joins (0 / 800 XP)
-- [ ] 1. Set theory for SQL Joins — 50 XP ▶
-- [ ] 2. UNION vs. UNION ALL — 100 XP `</>`
-- [ ] 3. Comparing global economies — 100 XP `</>`
-- [ ] 4. Comparing two set operations — 100 XP `</>`
-- [ ] 5. At the INTERSECT — 50 XP ▶
-- [ ] 6. INTERSECT — 100 XP `</>`
-- [ ] 7. Review UNION and INTERSECT — 50 XP ☰
-- [ ] 8. EXCEPT — 50 XP ▶
-- [ ] 9. You've got it, EXCEPT... — 100 XP `</>`
-- [ ] 10. Calling all set operators — 100 XP `</>`
-- [ ] **Capstone — Chapter 3**
+## Chapter 3 — Set Theory for SQL Joins (800 / 800 XP)
+- [x] 1. Set theory for SQL Joins — 50 XP ▶
+- [x] 2. UNION vs. UNION ALL — 100 XP `</>`
+- [x] 3. Comparing global economies — 100 XP `</>`
+- [x] 4. Comparing two set operations — 100 XP `</>`
+- [x] 5. At the INTERSECT — 50 XP ▶
+- [x] 6. INTERSECT — 100 XP `</>`
+- [x] 7. Review UNION and INTERSECT — 50 XP ☰
+- [x] 8. EXCEPT — 50 XP ▶
+- [x] 9. You've got it, EXCEPT... — 100 XP `</>`
+- [x] 10. Calling all set operators — 100 XP `</>`
+- [x] **Capstone — Chapter 3**
 
 ## Chapter 4 — Subqueries (0 / 1100 XP)
-- [ ] 1. Subquerying with semi joins and anti joins — 50 XP ▶
-- [ ] 2. Multiple WHERE clauses — 100 XP `</>`
-- [ ] 3. Semi join — 100 XP `</>`
-- [ ] 4. Diagnosing problems using anti join — 100 XP `</>`
-- [ ] 5. Subqueries inside WHERE and SELECT — 50 XP ▶
-- [ ] 6. Subquery inside WHERE — 100 XP `</>`
-- [ ] 7. WHERE do people live? — 100 XP `</>`
-- [ ] 8. Subquery inside SELECT — 100 XP `</>`
-- [ ] 9. Subqueries inside FROM — 50 XP ▶
-- [ ] 10. Subquery inside FROM — 100 XP `</>`
-- [ ] 11. Subquery challenge — 100 XP `</>`
-- [ ] 12. Final challenge — 100 XP `</>`
-- [ ] 13. The finish line — 50 XP ▶
-- [ ] **Capstone — Chapter 4**
+- [x] 1. Subquerying with semi joins and anti joins — 50 XP ▶
+- [x] 2. Multiple WHERE clauses — 100 XP `</>`
+- [x] 3. Semi join — 100 XP `</>`
+- [x] 4. Diagnosing problems using anti join — 100 XP `</>`
+- [x] 5. Subqueries inside WHERE and SELECT — 50 XP ▶
+- [x] 6. Subquery inside WHERE — 100 XP `</>`
+- [x] 7. WHERE do people live? — 100 XP `</>`
+- [x] 8. Subquery inside SELECT — 100 XP `</>`
+- [x] 9. Subqueries inside FROM — 50 XP ▶
+- [x] 10. Subquery inside FROM — 100 XP `</>`
+- [x] 11. Subquery challenge — 100 XP `</>`
+- [x] 12. Final challenge — 100 XP `</>`
+- [x] 13. The finish line — 50 XP ▶
+- [x] **Capstone — Chapter 4**
 
 ### Mistakes log — Joining Data in SQL
-_(empty — populated when 3 hints fail on an exercise)_
+- Ch2 L2: Confused `ON c.name = p.country` (join key) with `p.president` (display value); also forgot `AS p` alias on the JOIN table declaration.

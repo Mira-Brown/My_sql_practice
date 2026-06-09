@@ -1,3 +1,62 @@
+SELECT *
+FROM economies;
+
+SELECT code, year, income_group
+FROM economies2015
+UNION ALL
+SELECT code, year, income_group
+FROM economies2019;
+
+SELECT country, continent
+FROM prime_ministers
+UNION ALL
+SELECT country, continent
+FROM monarchs
+ORDER BY country
+
+SELECT country, continent
+FROM prime_ministers
+UNION 
+SELECT country, continent
+FROM monarchs
+ORDER BY country
+
+SELECT country, continent 
+FROM prime_ministers
+INTERSECT
+SELECT country FROM presidents;
+
+SELECT name
+FROM countries
+INTERSECT
+SELECT name
+FROM cities
+ORDER BY name;
+
+
+-- Objective: Use EXCEPT to find monarchs whose continent has no prime minister.
+--
+-- Instructions:
+--   1. SELECT continent FROM monarchs
+--      EXCEPT
+--      SELECT continent FROM prime_ministers
+--   2. ORDER BY continent
+
+-- TODO: Write your query here
+SELECT continent
+FROM monarchs
+EXCEPT
+SELECT continent
+FROM prime_ministers
+ORDER BY continent;
+
+SELECT code, year, income_group
+FROM economies2015
+INTERSECT
+SELECT code, year, income_group
+FROM economies2019
+ORDER BY code;
+
 -- Capstone: Chapter 3 — Set Theory for SQL Joins
 --
 -- You are a data analyst at a global economics research firm.
@@ -47,3 +106,4 @@ INTERSECT
 SELECT continent
 FROM prime_ministers
 ORDER BY continent;
+

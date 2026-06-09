@@ -1,2 +1,15 @@
--- 13-the-finish-line
--- (lesson populated by instructor during teaching)
+-- Lesson: The finish line (Video — course wrap-up)
+-- Full toolkit summary:
+--   INNER JOIN       → rows with matches in both tables
+--   LEFT/RIGHT JOIN  → keep unmatched rows from one side
+--   FULL JOIN        → keep unmatched rows from both sides
+--   CROSS JOIN       → every combination of rows
+--   Self join        → compare a table to itself
+--   UNION/UNION ALL  → stack result sets (deduplicated / all)
+--   INTERSECT        → rows in both result sets
+--   EXCEPT           → rows in first set but not second
+--   Semi join        → filter A by existence in B (WHERE IN subquery)
+--   Anti join        → filter A by absence in B (WHERE NOT IN subquery)
+--   Subquery in WHERE → filter using a derived value or set
+--   Subquery in SELECT → add a computed scalar column per row
+--   Subquery in FROM  → treat an aggregated result as a temporary table
