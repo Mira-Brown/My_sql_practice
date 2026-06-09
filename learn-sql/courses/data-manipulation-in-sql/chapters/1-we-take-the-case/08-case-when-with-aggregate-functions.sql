@@ -1,0 +1,6 @@
+-- Lesson 8: CASE WHEN with aggregate functions
+-- Type: Video ▶ (50 XP)
+-- Dataset: data-manipulation-in-sql (European Soccer) — DB at ../../database
+--
+-- Instructor fills brief / runnable example / TODO starter here during the lesson.
+-- (No solution committed to chapters/.)

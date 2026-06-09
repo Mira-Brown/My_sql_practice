@@ -1,0 +1,6 @@
+-- Lesson 3: Filtering using a subquery with a list
+-- Type: Exercise </> (100 XP)
+-- Dataset: data-manipulation-in-sql (European Soccer) — DB at ../../database
+--
+-- Instructor fills brief / runnable example / TODO starter here during the lesson.
+-- (No solution committed to chapters/.)

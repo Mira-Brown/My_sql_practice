@@ -2,12 +2,13 @@
 
 DataCamp-style, instructor-led SQL courses you take through Claude Code. Each course runs against a local SQLite database. No internet, no signups.
 
-Two courses currently available:
+Three courses currently available:
 
 | # | Course | Lessons | XP | Dataset | Status |
 |---|---|---|---|---|---|
 | 1 | Intermediate SQL | 49 | 3900 | ~5000 films | ✅ complete |
-| 2 | Joining Data in SQL | 47 | 3950 | countries + leaders | 🟡 in progress |
+| 2 | Joining Data in SQL | 47 | 3950 | countries + leaders | ✅ complete |
+| 3 | Data Manipulation in SQL | 55 | 4700 | European Soccer | 🟢 ready |
 
 ---
 
@@ -35,12 +36,20 @@ learn-sql/
     │   │   └── setup.sql
     │   ├── chapters/                      ← lesson files
     │   └── solutions/                     ← filled if you fail 3 hints
-    └── joining-data-in-sql/
+    ├── joining-data-in-sql/
+    │   ├── topics/
+    │   ├── csv/                           (countries/, leaders/)
+    │   ├── assets/                        (join diagrams — Venn, INNER/LEFT/RIGHT/FULL/CROSS, UNION, INTERSECT, EXCEPT, semi/anti)
+    │   ├── database/
+    │   │   ├── joining-data-in-sql.db
+    │   │   └── setup.sql
+    │   ├── chapters/
+    │   └── solutions/
+    └── data-manipulation-in-sql/
         ├── topics/
-        ├── csv/                           (countries/, leaders/)
-        ├── assets/                        (join diagrams — Venn, INNER/LEFT/RIGHT/FULL/CROSS, UNION, INTERSECT, EXCEPT, semi/anti)
+        ├── csv/                           (country, league, team, match)
         ├── database/
-        │   ├── joining-data-in-sql.db
+        │   ├── data-manipulation-in-sql.db
         │   └── setup.sql
         ├── chapters/
         └── solutions/
@@ -50,7 +59,7 @@ learn-sql/
 
 ## 3. Picking a course
 
-Open `COURSE.md` — first line shows **Active course**. Edit it to switch (e.g. `intermediate-sql` ↔ `joining-data-in-sql`), or tell the instructor "switch to joining-data-in-sql".
+Open `COURSE.md` — first line shows **Active course**. Edit it to switch between `intermediate-sql`, `joining-data-in-sql`, and `data-manipulation-in-sql`, or tell the instructor "switch to data-manipulation-in-sql".
 
 ---
 
@@ -133,6 +142,11 @@ sqlite3 courses/intermediate-sql/database/intermediate-sql.db "SELECT COUNT(*) F
 sqlite3 courses/joining-data-in-sql/database/joining-data-in-sql.db
 sqlite3 courses/joining-data-in-sql/database/joining-data-in-sql.db < path/to/file.sql
 sqlite3 courses/joining-data-in-sql/database/joining-data-in-sql.db "SELECT COUNT(*) FROM countries;"
+
+# Data Manipulation in SQL
+sqlite3 courses/data-manipulation-in-sql/database/data-manipulation-in-sql.db
+sqlite3 courses/data-manipulation-in-sql/database/data-manipulation-in-sql.db < path/to/file.sql
+sqlite3 courses/data-manipulation-in-sql/database/data-manipulation-in-sql.db "SELECT COUNT(*) FROM match;"
 ```
 
 Inside the shell:
@@ -178,6 +192,16 @@ films (4968)   ─< roles (19791) >─  people (8397)
 - **prime_ministers** (10) — `country` PK, `continent`, `prime_minister`
 - **prime_minister_terms** (10) — `prime_minister`, `pm_start`
 
+### `data-manipulation-in-sql.db` — European Soccer
+```
+country (11) ─< league (11)
+country (11) ─< match (12837) >─ team (299)   (match.hometeam_id / awayteam_id = team.team_api_id)
+```
+- **country** (11) — `id` PK, `name`
+- **league** (11) — `id` PK, `country_id` FK→country.id, `name`
+- **team** (299) — `id` PK, `team_api_id` (joined by match), `team_long_name`, `team_short_name`
+- **match** (12837) — `id` PK, `country_id` FK→country.id, `season`, `stage`, `date`, `hometeam_id`, `awayteam_id` (→team.team_api_id), `home_goal`, `away_goal`
+
 ### Rebuilding a DB
 
 ```bash
@@ -190,6 +214,11 @@ sqlite3 intermediate-sql.db < setup.sql
 cd courses/joining-data-in-sql/database
 rm -f joining-data-in-sql.db
 sqlite3 joining-data-in-sql.db < setup.sql
+
+# data-manipulation-in-sql
+cd courses/data-manipulation-in-sql/database
+rm -f data-manipulation-in-sql.db
+sqlite3 data-manipulation-in-sql.db < setup.sql
 ```
 
 Row-count summary prints after each rebuild — verify all tables loaded.
@@ -213,6 +242,14 @@ Row-count summary prints after each rebuild — verify all tables loaded.
 | 2 | Outer Joins, Cross Joins and Self Joins | 14 | 1200 |
 | 3 | Set Theory for SQL Joins | 10 | 800 |
 | 4 | Subqueries | 13 | 1100 |
+
+### Data Manipulation in SQL (55 lessons, 4700 XP)
+| Ch | Title | Lessons | XP |
+|---|---|---|---|
+| 1 | We Take the CASE | 11 | 950 |
+| 2 | Short and Simple Subqueries | 14 | 1200 |
+| 3 | Correlated Queries, Nested Queries, and CTEs | 15 | 1250 |
+| 4 | Window Functions | 15 | 1300 |
 
 Each chapter ends with a **capstone** (`chapters/<N>-<name>/capstone.sql`) — a realistic analysis brief combining everything in that chapter.
 
@@ -238,4 +275,5 @@ Good luck. Start with `begin teaching`.
 ```bash
 sqlite3 courses/intermediate-sql/database/intermediate-sql.db
 sqlite3 courses/joining-data-in-sql/database/joining-data-in-sql.db
+sqlite3 courses/data-manipulation-in-sql/database/data-manipulation-in-sql.db
 ```

@@ -1,0 +1,11 @@
+-- ============================================================
+-- CAPSTONE — Chapter 1: We Take the CASE
+-- ============================================================
+-- Scenario: realistic European Soccer analysis combining every
+-- technique from this chapter (CASE WHEN, conditional aggregation, fractions).
+--
+-- Instructor writes the full brief + requirements here when the
+-- student reaches the end of the chapter. (No solution committed.)
+-- ============================================================
+
+-- Write your query below:

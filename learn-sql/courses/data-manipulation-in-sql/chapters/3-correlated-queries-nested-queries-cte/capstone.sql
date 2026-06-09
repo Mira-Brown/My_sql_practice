@@ -1,0 +1,11 @@
+-- ============================================================
+-- CAPSTONE — Chapter 3: Correlated Queries, Nested Queries, and CTEs
+-- ============================================================
+-- Scenario: realistic European Soccer analysis combining every
+-- technique from this chapter (correlated + nested subqueries, CTEs).
+--
+-- Instructor writes the full brief + requirements here when the
+-- student reaches the end of the chapter. (No solution committed.)
+-- ============================================================
+
+-- Write your query below:

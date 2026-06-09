@@ -143,3 +143,81 @@ _(empty)_
 
 ### Mistakes log — Joining Data in SQL
 - Ch2 L2: Confused `ON c.name = p.country` (join key) with `p.president` (display value); also forgot `AS p` alias on the JOIN table declaration.
+
+---
+
+# Course 3: Data Manipulation in SQL
+
+**XP earned: 0 / 4700**
+
+**Current lesson:** Chapter 1, Lesson 1 — We'll take the CASE
+
+## Chapter 1 — We Take the CASE (0 / 950 XP)
+- [ ] 1. We'll take the CASE — 50 XP ▶
+- [ ] 2. Basic CASE statements — 100 XP `</>`
+- [ ] 3. CASE statements comparing column values — 100 XP `</>`
+- [ ] 4. CASE statements comparing two column values part 2 — 100 XP `</>`
+- [ ] 5. In CASE things get more complex — 50 XP ▶
+- [ ] 6. In CASE of rivalry — 100 XP `</>`
+- [ ] 7. Filtering your CASE statement — 100 XP `</>`
+- [ ] 8. CASE WHEN with aggregate functions — 50 XP ▶
+- [ ] 9. COUNT using CASE WHEN — 100 XP `</>`
+- [ ] 10. Conditional selection and summation with CASE WHEN — 100 XP `</>`
+- [ ] 11. Using CASE and AVG to derive fractions — 100 XP `</>`
+- [ ] **Capstone — Chapter 1**
+
+## Chapter 2 — Short and Simple Subqueries (0 / 1200 XP)
+- [ ] 1. WHERE are the Subqueries? — 50 XP ▶
+- [ ] 2. Filtering using scalar subqueries — 100 XP `</>`
+- [ ] 3. Filtering using a subquery with a list — 100 XP `</>`
+- [ ] 4. Filtering with more complex subquery conditions — 100 XP `</>`
+- [ ] 5. Subqueries in FROM — 50 XP ▶
+- [ ] 6. Joining Subqueries in FROM — 100 XP `</>`
+- [ ] 7. Building on Subqueries in FROM — 100 XP `</>`
+- [ ] 8. Subqueries in SELECT — 50 XP ▶
+- [ ] 9. Add a subquery to the SELECT clause — 100 XP `</>`
+- [ ] 10. Subqueries in Select for Calculations — 100 XP `</>`
+- [ ] 11. Subqueries everywhere! And best practices! — 50 XP ▶
+- [ ] 12. ALL the subqueries EVERYWHERE — 100 XP `</>`
+- [ ] 13. Add a subquery in FROM — 100 XP `</>`
+- [ ] 14. Add a subquery in SELECT — 100 XP `</>`
+- [ ] **Capstone — Chapter 2**
+
+## Chapter 3 — Correlated Queries, Nested Queries, and CTEs (0 / 1250 XP)
+- [ ] 1. Correlated subqueries — 50 XP ▶
+- [ ] 2. Getting started with correlated subqueries — 100 XP `</>`
+- [ ] 3. Correlated subquery with multiple conditions — 100 XP `</>`
+- [ ] 4. Nested subqueries — 50 XP ▶
+- [ ] 5. Getting started with nested subqueries — 100 XP `</>`
+- [ ] 6. Nest a subquery in FROM — 100 XP `</>`
+- [ ] 7. Common Table Expressions — 50 XP ▶
+- [ ] 8. Clean up with CTEs — 100 XP `</>`
+- [ ] 9. Organizing with CTEs — 100 XP `</>`
+- [ ] 10. CTEs with nested subqueries — 100 XP `</>`
+- [ ] 11. Deciding on techniques to use — 50 XP ▶
+- [ ] 12. Get team names with a subquery — 100 XP `</>`
+- [ ] 13. Get team names with correlated subqueries — 100 XP `</>`
+- [ ] 14. Get team names with CTEs — 100 XP `</>`
+- [ ] 15. Which technique to use? — 50 XP ☰
+- [ ] **Capstone — Chapter 3**
+
+## Chapter 4 — Window Functions (0 / 1300 XP)
+- [ ] 1. It's OVER — 50 XP ▶
+- [ ] 2. The match is OVER — 100 XP `</>`
+- [ ] 3. What's OVER here? — 100 XP `</>`
+- [ ] 4. Flip OVER your results — 100 XP `</>`
+- [ ] 5. OVER with a PARTITION — 50 XP ▶
+- [ ] 6. PARTITION BY a column — 100 XP `</>`
+- [ ] 7. PARTITION BY multiple columns — 100 XP `</>`
+- [ ] 8. Sliding windows — 50 XP ▶
+- [ ] 9. Slide to the left — 100 XP `</>`
+- [ ] 10. Slide to the right — 100 XP `</>`
+- [ ] 11. Bringing it all together — 50 XP ▶
+- [ ] 12. Setting up the home team CTE — 100 XP `</>`
+- [ ] 13. Setting up the away team CTE — 100 XP `</>`
+- [ ] 14. Putting the CTEs together — 100 XP `</>`
+- [ ] 15. Add a window function — 100 XP `</>`
+- [ ] **Capstone — Chapter 4**
+
+### Mistakes log — Data Manipulation in SQL
+_(empty)_

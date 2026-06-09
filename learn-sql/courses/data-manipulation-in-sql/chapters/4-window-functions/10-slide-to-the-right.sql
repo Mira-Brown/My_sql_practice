@@ -1,0 +1,6 @@
+-- Lesson 10: Slide to the right
+-- Type: Exercise </> (100 XP)
+-- Dataset: data-manipulation-in-sql (European Soccer) — DB at ../../database
+--
+-- Instructor fills brief / runnable example / TODO starter here during the lesson.
+-- (No solution committed to chapters/.)

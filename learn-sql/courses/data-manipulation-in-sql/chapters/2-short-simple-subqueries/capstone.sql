@@ -1,0 +1,11 @@
+-- ============================================================
+-- CAPSTONE — Chapter 2: Short and Simple Subqueries
+-- ============================================================
+-- Scenario: realistic European Soccer analysis combining every
+-- technique from this chapter (subqueries in WHERE, FROM, SELECT).
+--
+-- Instructor writes the full brief + requirements here when the
+-- student reaches the end of the chapter. (No solution committed.)
+-- ============================================================
+
+-- Write your query below:

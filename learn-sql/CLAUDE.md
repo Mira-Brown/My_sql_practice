@@ -33,6 +33,13 @@ Tracked in `COURSE.md` under **Active course**. Switch by updating that field. A
   - `anti2.png` — Ch4 anti-join
   - Reference via relative path in lesson `.sql` comment: `-- See: ../../assets/<file>.png`
 
+### 3. `data-manipulation-in-sql` — Data Manipulation in SQL (European Soccer dataset)
+- Topics, CSVs, chapters live under `courses/data-manipulation-in-sql/`
+- DB: `courses/data-manipulation-in-sql/database/data-manipulation-in-sql.db`
+- Rebuild: `sqlite3 data-manipulation-in-sql.db < setup.sql` (from `database/`)
+- See **Schema: data-manipulation-in-sql** below.
+- No diagram assets — teach CASE / subqueries / CTEs / window functions with runnable queries against `match`.
+
 ## Generic workspace map (per course)
 - `courses/<course>/topics/` — DataCamp chapter lesson lists (source of truth for order and XP)
 - `courses/<course>/csv/` — raw CSVs
@@ -186,6 +193,89 @@ JOIN economies e ON e.code = c.code;
 
 ---
 
+## Schema: data-manipulation-in-sql
+
+European Soccer database subset. CSVs have **header rows** (`.import --skip 1` strips them in `setup.sql`). Four tables.
+
+### Tables
+
+**`country`** (11 rows) — `id` PK
+| column | type | notes |
+|---|---|---|
+| `id` | INTEGER | **PK** (sparse ids, e.g. 1, 1729, 24558) |
+| `name` | TEXT | e.g. 'Belgium', 'England', 'Spain' |
+
+**`league`** (11 rows) — `id` PK, `country_id` FK→country.id
+| column | type | notes |
+|---|---|---|
+| `id` | INTEGER | **PK** |
+| `country_id` | INTEGER | **FK → country.id** (one league per country here) |
+| `name` | TEXT | e.g. 'England Premier League' |
+
+**`team`** (299 rows) — `id` PK
+| column | type | notes |
+|---|---|---|
+| `id` | INTEGER | **PK** (internal) |
+| `team_api_id` | INTEGER | join key used by `match` (NOT `team.id`) |
+| `team_long_name` | TEXT | e.g. 'KRC Genk' |
+| `team_short_name` | TEXT | e.g. 'GEN' |
+
+**`match`** (12837 rows) — `id` PK
+| column | type | notes |
+|---|---|---|
+| `id` | INTEGER | **PK** |
+| `country_id` | INTEGER | **FK → country.id** |
+| `season` | TEXT | e.g. '2011/2012' |
+| `stage` | INTEGER | matchday / round |
+| `date` | TEXT | raw source format (`M/D/YY H:MM`) |
+| `hometeam_id` | INTEGER | **→ team.team_api_id** |
+| `awayteam_id` | INTEGER | **→ team.team_api_id** |
+| `home_goal` | INTEGER | goals scored by home team |
+| `away_goal` | INTEGER | goals scored by away team |
+
+### Relationships
+
+```
+country (1) ──< (M) league       (league.country_id = country.id)
+country (1) ──< (M) match         (match.country_id = country.id)
+team (1) ──< (M) match (home)     (match.hometeam_id = team.team_api_id)
+team (1) ──< (M) match (away)     (match.awayteam_id = team.team_api_id)
+```
+
+### Gotchas (teach these)
+- **`match` joins `team` on `team_api_id`, not `team.id`.** This trips students constantly.
+- A match references two teams (home + away) → self-join `team` twice, or use subqueries / CTEs (the course's whole point).
+- `season` is TEXT (`'2011/2012'`), not a number — filter as a string.
+- No result column exists — derive win/draw/loss with `CASE WHEN home_goal > away_goal ...` (Chapter 1's core skill).
+
+### Common query patterns
+```sql
+-- label each match outcome for the home team (Ch1 CASE)
+SELECT id, home_goal, away_goal,
+       CASE WHEN home_goal > away_goal THEN 'home win'
+            WHEN home_goal < away_goal THEN 'away win'
+            ELSE 'draw' END AS outcome
+FROM match;
+
+-- match with both team names (join team twice on team_api_id)
+SELECT m.id, h.team_long_name AS home, a.team_long_name AS away,
+       m.home_goal, m.away_goal
+FROM match AS m
+JOIN team AS h ON m.hometeam_id = h.team_api_id
+JOIN team AS a ON m.awayteam_id = a.team_api_id;
+
+-- matches per league/season (Ch2 subquery / Ch4 window source)
+SELECT c.name AS country, m.season, COUNT(*) AS matches
+FROM match AS m
+JOIN country AS c ON m.country_id = c.id
+GROUP BY c.name, m.season;
+```
+
+### Indexes
+`league.country_id`, `team.team_api_id`, `match.country_id`, `match.hometeam_id`, `match.awayteam_id`, `match.season`.
+
+---
+
 ## Lesson types
 
 | XP | DataCamp icon | Type | Format |
@@ -243,6 +333,10 @@ sqlite3 courses/intermediate-sql/database/intermediate-sql.db "SELECT ..."
 # joining-data-in-sql
 sqlite3 courses/joining-data-in-sql/database/joining-data-in-sql.db < <query-file.sql>
 sqlite3 courses/joining-data-in-sql/database/joining-data-in-sql.db "SELECT ..."
+
+# data-manipulation-in-sql
+sqlite3 courses/data-manipulation-in-sql/database/data-manipulation-in-sql.db < <query-file.sql>
+sqlite3 courses/data-manipulation-in-sql/database/data-manipulation-in-sql.db "SELECT ..."
 ```
 
 ## After every lesson — update COURSE.md
