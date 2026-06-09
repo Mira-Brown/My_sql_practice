@@ -1,0 +1,32 @@
+In this chapter, you will learn how to use nested and correlated subqueries to extract more complex data from a relational database. You will also learn about common table expressions and how to best construct queries using multiple common table expressions.
+
+Correlated subqueries
+50 XP
+Getting started with correlated subqueries
+100 XP
+Correlated subquery with multiple conditions
+100 XP
+Nested subqueries
+50 XP
+Getting started with nested subqueries
+100 XP
+Nest a subquery in FROM
+100 XP
+Common Table Expressions
+50 XP
+Clean up with CTEs
+100 XP
+Organizing with CTEs
+100 XP
+CTEs with nested subqueries
+100 XP
+Deciding on techniques to use
+50 XP
+Get team names with a subquery
+100 XP
+Get team names with correlated subqueries
+100 XP
+Get team names with CTEs
+100 XP
+Which technique to use?
+50 XP

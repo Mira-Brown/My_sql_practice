@@ -1,0 +1,24 @@
+In this chapter, you will learn how to use the CASE WHEN statement to create categorical variables, aggregate data into a single column with multiple filtering conditions, and calculate counts and percentages.
+
+We'll take the CASE
+50 XP
+Basic CASE statements
+100 XP
+CASE statements comparing column values
+100 XP
+CASE statements comparing two column values part 2
+100 XP
+In CASE things get more complex
+50 XP
+In CASE of rivalry
+100 XP
+Filtering your CASE statement
+100 XP
+CASE WHEN with aggregate functions
+50 XP
+COUNT using CASE WHEN
+100 XP
+Conditional selection and summation with CASE WHEN
+100 XP
+Using CASE and AVG to derive fractions
+100 XP

@@ -1,0 +1,30 @@
+In this chapter, you will learn about subqueries in the SELECT, FROM, and WHERE clauses. You will gain an understanding of when subqueries are necessary to construct your dataset and where to best include them in your queries.
+
+WHERE are the Subqueries?
+50 XP
+Filtering using scalar subqueries
+100 XP
+Filtering using a subquery with a list
+100 XP
+Filtering with more complex subquery conditions
+100 XP
+Subqueries in FROM
+50 XP
+Joining Subqueries in FROM
+100 XP
+Building on Subqueries in FROM
+100 XP
+Subqueries in SELECT
+50 XP
+Add a subquery to the SELECT clause
+100 XP
+Subqueries in Select for Calculations
+100 XP
+Subqueries everywhere! And best practices!
+50 XP
+ALL the subqueries EVERYWHERE
+100 XP
+Add a subquery in FROM
+100 XP
+Add a subquery in SELECT
+100 XP

@@ -1,0 +1,55 @@
+You will learn about window functions and how to pass aggregate functions along a dataset. You will also learn how to calculate running totals and partitioned averages.
+
+It's OVER
+50 XP
+The match is OVER
+100 XP
+What's OVER here?
+100 XP
+Flip OVER your results
+100 XP
+OVER with a PARTITION
+50 XP
+PARTITION BY a column
+100 XP
+PARTITION BY multiple columns
+100 XP
+Sliding windows
+50 XP
+Slide to the left
+100 XP
+Slide to the right
+100 XP
+Bringing it all together
+50 XP
+Setting up the home team CTE
+100 XP
+Setting up the away team CTE
+100 XP
+Putting the CTEs together
+100 XP
+Add a window function
+100 XP
+Share
+Prerequisites
+Joining Data in SQL
+resources
+Create Course Notes
+Your learnings in one place
+European Soccer Da…
+Dataset
+Course Glossary
+Dataset
+Part of These Tracks
+Associate Data Analyst
+Associate Data Engineer
+Data Analyst
+Instructors
+profile picture of Mona Khalil
+Mona Khalil
+Data Scientist, Greenhouse Software
+Collaborators
+Sumedh Panchadhar
+Sumedh Panchadhar
+Hillary Green-Lerman
+Hillary Green-Lerman
