@@ -1,0 +1,12 @@
+-- ============================================================
+-- CAPSTONE — Chapter 1: Introduction to Window Functions
+-- ============================================================
+-- Engine: PostgreSQL — table summer_medals (Summer Olympic medals).
+-- Scenario: realistic Olympic-medal analysis combining every
+-- technique from this chapter (ROW_NUMBER, ORDER BY, PARTITION BY).
+--
+-- Instructor writes the full brief + requirements here when the
+-- student reaches the end of the chapter. (No solution committed.)
+-- ============================================================
+
+-- Write your query below:

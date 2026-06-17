@@ -1,0 +1,12 @@
+-- ============================================================
+-- CAPSTONE — Chapter 2: Fetching, Ranking, and Paging
+-- ============================================================
+-- Engine: PostgreSQL — table summer_medals (Summer Olympic medals).
+-- Scenario: realistic Olympic-medal analysis combining every
+-- technique from this chapter (LAG/LEAD/FIRST_VALUE/LAST_VALUE, RANK/DENSE_RANK, NTILE).
+--
+-- Instructor writes the full brief + requirements here when the
+-- student reaches the end of the chapter. (No solution committed.)
+-- ============================================================
+
+-- Write your query below:

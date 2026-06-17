@@ -2,13 +2,16 @@
 
 DataCamp-style, instructor-led SQL courses you take through Claude Code. Each course runs against a local SQLite database. No internet, no signups.
 
-Three courses currently available:
+Four courses currently available:
 
-| # | Course | Lessons | XP | Dataset | Status |
-|---|---|---|---|---|---|
-| 1 | Intermediate SQL | 49 | 3900 | ~5000 films | ✅ complete |
-| 2 | Joining Data in SQL | 47 | 3950 | countries + leaders | ✅ complete |
-| 3 | Data Manipulation in SQL | 55 | 4700 | European Soccer | 🟢 ready |
+| # | Course | Lessons | XP | Dataset | Engine | Status |
+|---|---|---|---|---|---|---|
+| 1 | Intermediate SQL | 49 | 3900 | ~5000 films | SQLite | ✅ complete |
+| 2 | Joining Data in SQL | 47 | 3950 | countries + leaders | SQLite | ✅ complete |
+| 3 | Data Manipulation in SQL | 55 | 4700 | European Soccer | SQLite | 🟢 ready |
+| 4 | PostgreSQL Summary Stats and Window Functions | 44 | 3550 | Summer Olympic medals | **PostgreSQL** | 🟢 ready |
+
+> Course 4 runs on **PostgreSQL**, not SQLite — it uses `crosstab()` pivots, `ROLLUP`/`CUBE`, and full window-frame syntax. You need a local Postgres server (see §10).
 
 ---
 
@@ -45,12 +48,20 @@ learn-sql/
     │   │   └── setup.sql
     │   ├── chapters/
     │   └── solutions/
-    └── data-manipulation-in-sql/
+    ├── data-manipulation-in-sql/
+    │   ├── topics/
+    │   ├── csv/                           (country, league, team, match)
+    │   ├── database/
+    │   │   ├── data-manipulation-in-sql.db
+    │   │   └── setup.sql
+    │   ├── chapters/
+    │   └── solutions/
+    └── postgres-summary-stats-window-function/   ← PostgreSQL, not SQLite
         ├── topics/
-        ├── csv/                           (country, league, team, match)
+        ├── csv/                           (summer.csv — Olympic medals)
         ├── database/
-        │   ├── data-manipulation-in-sql.db
-        │   └── setup.sql
+        │   ├── setup.sql                  ← psql script (\copy load)
+        │   └── setup.sh                   ← createdb + load helper
         ├── chapters/
         └── solutions/
 ```
@@ -59,7 +70,7 @@ learn-sql/
 
 ## 3. Picking a course
 
-Open `COURSE.md` — first line shows **Active course**. Edit it to switch between `intermediate-sql`, `joining-data-in-sql`, and `data-manipulation-in-sql`, or tell the instructor "switch to data-manipulation-in-sql".
+Open `COURSE.md` — first line shows **Active course**. Edit it to switch between `intermediate-sql`, `joining-data-in-sql`, `data-manipulation-in-sql`, and `postgres-summary-stats-window-function`, or tell the instructor "switch to postgres-summary-stats-window-function".
 
 ---
 
@@ -147,9 +158,14 @@ sqlite3 courses/joining-data-in-sql/database/joining-data-in-sql.db "SELECT COUN
 sqlite3 courses/data-manipulation-in-sql/database/data-manipulation-in-sql.db
 sqlite3 courses/data-manipulation-in-sql/database/data-manipulation-in-sql.db < path/to/file.sql
 sqlite3 courses/data-manipulation-in-sql/database/data-manipulation-in-sql.db "SELECT COUNT(*) FROM match;"
+
+# PostgreSQL Summary Stats and Window Functions  (PostgreSQL — use psql, not sqlite3)
+psql -d postgres_summary_stats
+psql -d postgres_summary_stats -f path/to/file.sql
+psql -d postgres_summary_stats -c "SELECT COUNT(*) FROM summer_medals;"
 ```
 
-Inside the shell:
+Inside the SQLite shell:
 ```
 .tables
 .schema countries
@@ -157,6 +173,14 @@ Inside the shell:
 .mode column
 SELECT * FROM countries LIMIT 5;
 .quit
+```
+
+Inside the psql shell (course 4):
+```
+\dt
+\d summer_medals
+SELECT * FROM summer_medals LIMIT 5;
+\q
 ```
 
 ---
@@ -202,6 +226,12 @@ country (11) ─< match (12837) >─ team (299)   (match.hometeam_id / awayteam_
 - **team** (299) — `id` PK, `team_api_id` (joined by match), `team_long_name`, `team_short_name`
 - **match** (12837) — `id` PK, `country_id` FK→country.id, `season`, `stage`, `date`, `hometeam_id`, `awayteam_id` (→team.team_api_id), `home_goal`, `away_goal`
 
+### `postgres_summary_stats` — Summer Olympic medals (**PostgreSQL**)
+Single table, one row per medal won (31165 rows):
+- **summer_medals** — `year`, `city`, `sport`, `discipline`, `athlete`, `country` (IOC code), `gender` (`Men`/`Women`), `event`, `medal` (`Gold`/`Silver`/`Bronze`)
+
+Needs a running PostgreSQL server. The `tablefunc` extension (for `crosstab()` in Chapter 4) is created by `setup.sql`.
+
 ### Rebuilding a DB
 
 ```bash
@@ -219,6 +249,13 @@ sqlite3 joining-data-in-sql.db < setup.sql
 cd courses/data-manipulation-in-sql/database
 rm -f data-manipulation-in-sql.db
 sqlite3 data-manipulation-in-sql.db < setup.sql
+
+# postgres-summary-stats-window-function  (PostgreSQL — needs a running server)
+cd courses/postgres-summary-stats-window-function/database
+./setup.sh                       # createdb postgres_summary_stats + load
+# or manually:
+#   createdb postgres_summary_stats
+#   psql -v ON_ERROR_STOP=1 -d postgres_summary_stats -f setup.sql
 ```
 
 Row-count summary prints after each rebuild — verify all tables loaded.
@@ -251,6 +288,14 @@ Row-count summary prints after each rebuild — verify all tables loaded.
 | 3 | Correlated Queries, Nested Queries, and CTEs | 15 | 1250 |
 | 4 | Window Functions | 15 | 1300 |
 
+### PostgreSQL Summary Stats and Window Functions (44 lessons, 3550 XP) — **PostgreSQL**
+| Ch | Title | Lessons | XP |
+|---|---|---|---|
+| 1 | Introduction to window functions | 12 | 950 |
+| 2 | Fetching, ranking, and paging | 11 | 900 |
+| 3 | Aggregate window functions and frames | 12 | 950 |
+| 4 | Beyond window functions | 9 | 750 |
+
 Each chapter ends with a **capstone** (`chapters/<N>-<name>/capstone.sql`) — a realistic analysis brief combining everything in that chapter.
 
 ---
@@ -276,4 +321,5 @@ Good luck. Start with `begin teaching`.
 sqlite3 courses/intermediate-sql/database/intermediate-sql.db
 sqlite3 courses/joining-data-in-sql/database/joining-data-in-sql.db
 sqlite3 courses/data-manipulation-in-sql/database/data-manipulation-in-sql.db
+psql -d postgres_summary_stats          # course 4 — PostgreSQL
 ```

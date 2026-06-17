@@ -1,0 +1,12 @@
+-- ============================================================
+-- CAPSTONE — Chapter 3: Aggregate Window Functions and Frames
+-- ============================================================
+-- Engine: PostgreSQL — table summer_medals (Summer Olympic medals).
+-- Scenario: realistic Olympic-medal analysis combining every
+-- technique from this chapter (SUM/MAX/MIN/AVG OVER, ROWS/RANGE BETWEEN frames).
+--
+-- Instructor writes the full brief + requirements here when the
+-- student reaches the end of the chapter. (No solution committed.)
+-- ============================================================
+
+-- Write your query below:

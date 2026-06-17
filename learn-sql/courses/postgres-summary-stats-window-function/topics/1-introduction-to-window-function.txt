@@ -1,0 +1,26 @@
+In this chapter, you'll learn what window functions are, and the two basic window function subclauses, ORDER BY and PARTITION BY.
+
+Introduction
+50 XP
+Window functions vs GROUP BY
+50 XP
+Numbering rows
+100 XP
+Numbering Olympic games in ascending order
+100 XP
+ORDER BY
+50 XP
+Numbering Olympic games in descending order
+100 XP
+Numbering Olympic athletes by medals earned
+100 XP
+Reigning weightlifting champions
+100 XP
+PARTITION BY
+50 XP
+Reigning champions by gender
+100 XP
+Reigning champions by gender and event
+100 XP
+Row numbers with partitioning
+50 XP

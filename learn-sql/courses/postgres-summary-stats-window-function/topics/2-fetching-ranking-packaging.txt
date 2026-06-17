@@ -1,0 +1,24 @@
+In this chapter, you'll learn three practical applications of window functions: fetching values from different parts of the table, ranking rows according to their values, and binning rows into different tables.
+
+Fetching
+50 XP
+Future gold medalists
+100 XP
+First athlete by name
+100 XP
+Last country by name
+100 XP
+Ranking
+50 XP
+Ranking athletes by medals earned
+100 XP
+Ranking athletes from multiple countries
+100 XP
+DENSE_RANK's output
+50 XP
+Paging
+50 XP
+Paging events
+100 XP
+Top, middle, and bottom thirds
+100 XP

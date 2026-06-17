@@ -1,0 +1,20 @@
+In this last chapter, you'll learn some techniques and functions that are useful when used together with window functions.
+
+Pivoting
+50 XP
+A basic pivot
+100 XP
+Pivoting with ranking
+100 XP
+ROLLUP and CUBE
+50 XP
+Country-level subtotals
+100 XP
+All group-level subtotals
+100 XP
+A survey of useful functions
+50 XP
+Cleaning up results
+100 XP
+Summarizing results
+100 XP

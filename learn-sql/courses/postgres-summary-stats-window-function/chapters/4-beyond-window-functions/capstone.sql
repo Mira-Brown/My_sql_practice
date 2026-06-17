@@ -1,0 +1,12 @@
+-- ============================================================
+-- CAPSTONE — Chapter 4: Beyond Window Functions
+-- ============================================================
+-- Engine: PostgreSQL — table summer_medals (Summer Olympic medals).
+-- Scenario: realistic Olympic-medal analysis combining every
+-- technique from this chapter (crosstab() pivots, ROLLUP, CUBE, COALESCE/STRING_AGG).
+--
+-- Instructor writes the full brief + requirements here when the
+-- student reaches the end of the chapter. (No solution committed.)
+-- ============================================================
+
+-- Write your query below:

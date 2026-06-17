@@ -1,0 +1,6 @@
+-- Lesson 9: Paging
+-- Type: Video ▶ (50 XP)
+-- Engine: PostgreSQL — table summer_medals (Summer Olympic medals). DB built via ../../database/setup.sh
+--
+-- Instructor fills brief / runnable example / TODO starter here during the lesson.
+-- (No solution committed to chapters/.)

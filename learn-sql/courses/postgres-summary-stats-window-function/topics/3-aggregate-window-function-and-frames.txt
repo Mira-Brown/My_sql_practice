@@ -1,0 +1,26 @@
+In this chapter, you'll learn how to use aggregate functions you're familiar with, like `AVG()` and `SUM()`, as window functions, as well as how to define frames to change a window function's output.
+
+Aggregate window functions
+50 XP
+Running totals of athlete medals
+100 XP
+Maximum country medals by year
+100 XP
+Minimum country medals by year
+100 XP
+Frames
+50 XP
+Number of rows in a frame
+50 XP
+Moving maximum of Scandinavian athletes' medals
+100 XP
+Moving maximum of Chinese athletes' medals
+100 XP
+Moving averages and totals
+50 XP
+Moving average's frame
+50 XP
+Moving average of Russian medals
+100 XP
+Moving total of countries' medals
+100 XP

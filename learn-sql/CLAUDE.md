@@ -40,6 +40,14 @@ Tracked in `COURSE.md` under **Active course**. Switch by updating that field. A
 - See **Schema: data-manipulation-in-sql** below.
 - No diagram assets — teach CASE / subqueries / CTEs / window functions with runnable queries against `match`.
 
+### 4. `postgres-summary-stats-window-function` — PostgreSQL Summary Stats and Window Functions (Summer Olympic medals)
+- **Engine: PostgreSQL, NOT SQLite.** This course uses `crosstab()`, `ROLLUP`/`CUBE`, and full window-frame syntax (`RANGE`/`ROWS BETWEEN`) — none of which SQLite supports the same way. **Use `psql`, never `sqlite3`, to run/verify queries.**
+- Topics, CSVs, chapters live under `courses/postgres-summary-stats-window-function/`
+- DB: PostgreSQL database `postgres_summary_stats` (no `.db` file — it lives in the running server)
+- Rebuild: `./setup.sh` from `database/` (runs `dropdb`/`createdb` + loads `setup.sql`), or `psql -d postgres_summary_stats -f setup.sql`
+- Requires a running local PostgreSQL server. If none is running, tell the student to start one (`brew services start postgresql@16`) — do **not** try to spin one up yourself.
+- See **Schema: postgres-summary-stats-window-function** below.
+
 ## Generic workspace map (per course)
 - `courses/<course>/topics/` — DataCamp chapter lesson lists (source of truth for order and XP)
 - `courses/<course>/csv/` — raw CSVs
@@ -276,6 +284,59 @@ GROUP BY c.name, m.season;
 
 ---
 
+## Schema: postgres-summary-stats-window-function
+
+**PostgreSQL** (not SQLite). Single denormalized table loaded from `csv/summer.csv` (header row). One row per medal won.
+
+### Table
+
+**`summer_medals`** (31165 rows)
+| column | type | notes |
+|---|---|---|
+| `year` | INTEGER | Olympic year, 1896–2012 |
+| `city` | TEXT | host city |
+| `sport` | TEXT | e.g. 'Aquatics' |
+| `discipline` | TEXT | e.g. 'Swimming' |
+| `athlete` | TEXT | 'SURNAME Firstname' |
+| `country` | TEXT | 3-letter IOC code (USA, GBR, HUN, …) |
+| `gender` | TEXT | 'Men' / 'Women' |
+| `event` | TEXT | e.g. '100M Freestyle' |
+| `medal` | TEXT | 'Gold' / 'Silver' / 'Bronze' |
+
+No primary key — it's an analysis table. Aggregate first (`COUNT(*)` of medals by athlete/country/year), then apply window functions over the aggregate.
+
+### Engine notes (teach these)
+- **Run everything with `psql`**, e.g. `psql -d postgres_summary_stats -c "..."`. SQLite dot-commands do not apply.
+- `crosstab()` (Ch4 pivoting) needs `CREATE EXTENSION tablefunc` — already run by `setup.sql`.
+- `ROLLUP` / `CUBE` (Ch4) and `RANGE`/`ROWS BETWEEN ... PRECEDING/FOLLOWING` frames (Ch3) are Postgres-native.
+- Ranking funcs: `ROW_NUMBER`, `RANK`, `DENSE_RANK`, `NTILE(n)`. Fetching: `LAG`, `LEAD`, `FIRST_VALUE`, `LAST_VALUE`.
+
+### Common query patterns
+```sql
+-- distinct Olympic years numbered chronologically (Ch1 ROW_NUMBER)
+SELECT year, ROW_NUMBER() OVER (ORDER BY year) AS row_n
+FROM (SELECT DISTINCT year FROM summer_medals) AS y;
+
+-- gold medals per country per year, with a running total (Ch3 frame)
+SELECT country, year,
+       COUNT(*) AS medals,
+       SUM(COUNT(*)) OVER (PARTITION BY country ORDER BY year) AS running
+FROM summer_medals
+WHERE medal = 'Gold'
+GROUP BY country, year;
+
+-- rank athletes by total medals within a country (Ch2 RANK)
+SELECT country, athlete, COUNT(*) AS medals,
+       RANK() OVER (PARTITION BY country ORDER BY COUNT(*) DESC) AS rnk
+FROM summer_medals
+GROUP BY country, athlete;
+```
+
+### Indexes
+`summer_medals(year)`, `summer_medals(country)`, `summer_medals(medal)`, `summer_medals(gender)`.
+
+---
+
 ## Lesson types
 
 | XP | DataCamp icon | Type | Format |
@@ -337,6 +398,10 @@ sqlite3 courses/joining-data-in-sql/database/joining-data-in-sql.db "SELECT ..."
 # data-manipulation-in-sql
 sqlite3 courses/data-manipulation-in-sql/database/data-manipulation-in-sql.db < <query-file.sql>
 sqlite3 courses/data-manipulation-in-sql/database/data-manipulation-in-sql.db "SELECT ..."
+
+# postgres-summary-stats-window-function  (PostgreSQL — psql, not sqlite3)
+psql -d postgres_summary_stats -f <query-file.sql>
+psql -d postgres_summary_stats -c "SELECT ..."
 ```
 
 ## After every lesson — update COURSE.md
