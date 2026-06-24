@@ -18,8 +18,8 @@ WITH season_goals AS (
     FROM match
     GROUP BY season
 )
-
 SELECT season, avg_goals
 FROM season_goals
 WHERE avg_goals > (SELECT AVG(avg_goals) FROM season_goals)
 ORDER BY avg_goals DESC;
+

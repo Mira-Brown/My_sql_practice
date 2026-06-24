@@ -24,4 +24,4 @@ FROM films;
 -- TODO: 4. Fix the bug
 SELECT title, budget AS cost
 FROM films
-WHERE cost IS NOT NULL;
+WHERE budget IS NOT NULL;

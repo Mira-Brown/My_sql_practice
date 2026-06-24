@@ -29,7 +29,6 @@ away_goals AS (
     FROM match
     GROUP BY awayteam_id
 )
-
 SELECT t.team_long_name, h.avg_home, a.avg_away
 FROM team AS t
 JOIN home_goals AS h ON t.team_api_id = h.hometeam_id

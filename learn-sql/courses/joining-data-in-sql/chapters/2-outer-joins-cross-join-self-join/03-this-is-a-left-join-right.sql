@@ -13,7 +13,7 @@
 
 -- TODO: write your LEFT JOIN query here
 SELECT c.name AS country,
-       r.region,
+       c.region,
        c.continent,
        e.gdp_percapita AS gdp
 FROM countries AS c       

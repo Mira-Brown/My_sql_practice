@@ -13,7 +13,6 @@
 
 SELECT
     country.name, match_stats.total_matches, match_stats.avg_goals
-
 FROM (
     SELECT country_id,
     COUNT(*) AS total_matches,

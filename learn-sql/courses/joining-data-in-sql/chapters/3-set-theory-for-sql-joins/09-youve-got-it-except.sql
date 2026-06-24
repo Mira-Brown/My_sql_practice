@@ -8,3 +8,9 @@
 --   2. ORDER BY continent
 
 -- TODO: Write your query here
+SELECT continent
+FROM monarchs
+EXCEPT
+SELECT continent
+FROM prime_ministers
+ORDER BY continent;

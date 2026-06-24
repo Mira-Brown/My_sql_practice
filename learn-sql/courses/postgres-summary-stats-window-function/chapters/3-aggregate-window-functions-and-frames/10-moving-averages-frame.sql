@@ -1,6 +1,11 @@
 -- Lesson 10: Moving average's frame
 -- Type: Theory ☰ (50 XP)
--- Engine: PostgreSQL — table summer_medals (Summer Olympic medals). DB built via ../../database/setup.sh
+-- Engine: PostgreSQL — table summer_medals (DB: postgres_summary_stats)
+
+-- QUESTION: Which frame gives you a 3-year moving average where
+-- the current year is always in the middle (1 before, current, 1 after)?
 --
--- Instructor fills brief / runnable example / TODO starter here during the lesson.
--- (No solution committed to chapters/.)
+--   A) ROWS BETWEEN 2 PRECEDING AND CURRENT ROW
+--   B) ROWS BETWEEN 1 PRECEDING AND 1 FOLLOWING
+--   C) ROWS BETWEEN UNBOUNDED PRECEDING AND 1 FOLLOWING
+--   D) ROWS BETWEEN 1 PRECEDING AND CURRENT ROW

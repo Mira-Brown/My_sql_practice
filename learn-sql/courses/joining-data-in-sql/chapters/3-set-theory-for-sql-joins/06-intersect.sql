@@ -18,3 +18,4 @@ INTERSECT
 SELECT name
 FROM cities
 ORDER BY name;
+

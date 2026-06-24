@@ -11,4 +11,4 @@
 SELECT country, prime_minister
 FROM prime_ministers
 WHERE country IN (
-    SELECT country FROM monarchs);
+    SELECT country FROM monarchs)

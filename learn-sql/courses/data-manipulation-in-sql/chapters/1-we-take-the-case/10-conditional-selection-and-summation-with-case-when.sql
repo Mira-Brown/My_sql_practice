@@ -20,4 +20,4 @@ SELECT
 FROM match
 GROUP BY season
 ORDER BY season;
-;
+

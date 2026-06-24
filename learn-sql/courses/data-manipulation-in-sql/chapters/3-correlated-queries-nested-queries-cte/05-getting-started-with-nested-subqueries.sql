@@ -18,7 +18,7 @@ WHERE (home_goal + away_goal) > (
     SELECT AVG(season_goals)
     FROM (
         SELECT AVG(home_goal + away_goal) AS season_goals
-    FROM match
-    GROUP BY season
-    ) AS season_avgs
+        FROM match
+        GROUP BY season)
+      AS season_avgs
 );

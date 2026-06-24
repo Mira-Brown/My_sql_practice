@@ -12,5 +12,6 @@
 
 SELECT code , name
 FROM countries
-WHERE code NOT IN (SELECT code FROM economies) AND continent = 'Oceania'
+WHERE code NOT IN (SELECT code FROM economies) 
+AND continent = 'Oceania'
 ORDER BY code ASC;

@@ -26,7 +26,7 @@ LEFT JOIN economies AS e
 ORDER BY e.gdp_percapita DESC;
 
 -- Mini challange
-sqlSELECT
+SELECT
     c.continent,
     ROUND(AVG(p.life_expectancy), 2)   AS avg_life_expectancy
 FROM countries AS c

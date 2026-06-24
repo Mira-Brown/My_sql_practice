@@ -1,6 +1,6 @@
 # SQL courses — Progress
 
-**Active course:** `data-manipulation-in-sql`
+**Active course:** `postgres-summary-stats-window-function`
 
 ---
 
@@ -228,65 +228,65 @@ _(empty)_
 
 **Engine:** PostgreSQL (database `postgres_summary_stats`) — run with `psql`, not `sqlite3`. Build via `database/setup.sh`.
 
-**XP earned: 0 / 3550**
+**XP earned: 3550 / 3550**
 
-**Current lesson:** Chapter 1, Lesson 1 — Introduction
+**Current lesson:** Course complete 🎓
 
-## Chapter 1 — Introduction to window functions (0 / 950 XP)
-- [ ] 1. Introduction — 50 XP ▶
-- [ ] 2. Window functions vs GROUP BY — 50 XP ☰
-- [ ] 3. Numbering rows — 100 XP `</>`
-- [ ] 4. Numbering Olympic games in ascending order — 100 XP `</>`
-- [ ] 5. ORDER BY — 50 XP ▶
-- [ ] 6. Numbering Olympic games in descending order — 100 XP `</>`
-- [ ] 7. Numbering Olympic athletes by medals earned — 100 XP `</>`
-- [ ] 8. Reigning weightlifting champions — 100 XP `</>`
-- [ ] 9. PARTITION BY — 50 XP ▶
-- [ ] 10. Reigning champions by gender — 100 XP `</>`
-- [ ] 11. Reigning champions by gender and event — 100 XP `</>`
-- [ ] 12. Row numbers with partitioning — 50 XP ☰
-- [ ] **Capstone — Chapter 1**
+## Chapter 1 — Introduction to window functions (950 / 950 XP) ✅
+- [x] 1. Introduction — 50 XP ▶
+- [x] 2. Window functions vs GROUP BY — 50 XP ☰
+- [x] 3. Numbering rows — 100 XP `</>`
+- [x] 4. Numbering Olympic games in ascending order — 100 XP `</>`
+- [x] 5. ORDER BY — 50 XP ▶
+- [x] 6. Numbering Olympic games in descending order — 100 XP `</>`
+- [x] 7. Numbering Olympic athletes by medals earned — 100 XP `</>`
+- [x] 8. Reigning weightlifting champions — 100 XP `</>`
+- [x] 9. PARTITION BY — 50 XP ▶
+- [x] 10. Reigning champions by gender — 100 XP `</>`
+- [x] 11. Reigning champions by gender and event — 100 XP `</>`
+- [x] 12. Row numbers with partitioning — 50 XP ☰
+- [x] **Capstone — Chapter 1**
 
-## Chapter 2 — Fetching, ranking, and paging (0 / 900 XP)
-- [ ] 1. Fetching — 50 XP ▶
-- [ ] 2. Future gold medalists — 100 XP `</>`
-- [ ] 3. First athlete by name — 100 XP `</>`
-- [ ] 4. Last country by name — 100 XP `</>`
-- [ ] 5. Ranking — 50 XP ▶
-- [ ] 6. Ranking athletes by medals earned — 100 XP `</>`
-- [ ] 7. Ranking athletes from multiple countries — 100 XP `</>`
-- [ ] 8. DENSE_RANK's output — 50 XP ☰
-- [ ] 9. Paging — 50 XP ▶
-- [ ] 10. Paging events — 100 XP `</>`
-- [ ] 11. Top, middle, and bottom thirds — 100 XP `</>`
-- [ ] **Capstone — Chapter 2**
+## Chapter 2 — Fetching, ranking, and paging (900 / 900 XP) ✅
+- [x] 1. Fetching — 50 XP ▶
+- [x] 2. Future gold medalists — 100 XP `</>`
+- [x] 3. First athlete by name — 100 XP `</>`
+- [x] 4. Last country by name — 100 XP `</>`
+- [x] 5. Ranking — 50 XP ▶
+- [x] 6. Ranking athletes by medals earned — 100 XP `</>`
+- [x] 7. Ranking athletes from multiple countries — 100 XP `</>`
+- [x] 8. DENSE_RANK's output — 50 XP ☰
+- [x] 9. Paging — 50 XP ▶
+- [x] 10. Paging events — 100 XP `</>`
+- [x] 11. Top, middle, and bottom thirds — 100 XP `</>`
+- [x] **Capstone — Chapter 2**
 
-## Chapter 3 — Aggregate window functions and frames (0 / 950 XP)
-- [ ] 1. Aggregate window functions — 50 XP ▶
-- [ ] 2. Running totals of athlete medals — 100 XP `</>`
-- [ ] 3. Maximum country medals by year — 100 XP `</>`
-- [ ] 4. Minimum country medals by year — 100 XP `</>`
-- [ ] 5. Frames — 50 XP ▶
-- [ ] 6. Number of rows in a frame — 50 XP ☰
-- [ ] 7. Moving maximum of Scandinavian athletes' medals — 100 XP `</>`
-- [ ] 8. Moving maximum of Chinese athletes' medals — 100 XP `</>`
-- [ ] 9. Moving averages and totals — 50 XP ▶
-- [ ] 10. Moving average's frame — 50 XP ☰
-- [ ] 11. Moving average of Russian medals — 100 XP `</>`
-- [ ] 12. Moving total of countries' medals — 100 XP `</>`
-- [ ] **Capstone — Chapter 3**
+## Chapter 3 — Aggregate window functions and frames (950 / 950 XP) ✅
+- [x] 1. Aggregate window functions — 50 XP ▶
+- [x] 2. Running totals of athlete medals — 100 XP `</>`
+- [x] 3. Maximum country medals by year — 100 XP `</>`
+- [x] 4. Minimum country medals by year — 100 XP `</>`
+- [x] 5. Frames — 50 XP ▶
+- [x] 6. Number of rows in a frame — 50 XP ☰
+- [x] 7. Moving maximum of Scandinavian athletes' medals — 100 XP `</>`
+- [x] 8. Moving maximum of Chinese athletes' medals — 100 XP `</>`
+- [x] 9. Moving averages and totals — 50 XP ▶
+- [x] 10. Moving average's frame — 50 XP ☰
+- [x] 11. Moving average of Russian medals — 100 XP `</>`
+- [x] 12. Moving total of countries' medals — 100 XP `</>`
+- [x] **Capstone — Chapter 3**
 
-## Chapter 4 — Beyond window functions (0 / 750 XP)
-- [ ] 1. Pivoting — 50 XP ▶
-- [ ] 2. A basic pivot — 100 XP `</>`
-- [ ] 3. Pivoting with ranking — 100 XP `</>`
-- [ ] 4. ROLLUP and CUBE — 50 XP ▶
-- [ ] 5. Country-level subtotals — 100 XP `</>`
-- [ ] 6. All group-level subtotals — 100 XP `</>`
-- [ ] 7. A survey of useful functions — 50 XP ▶
-- [ ] 8. Cleaning up results — 100 XP `</>`
-- [ ] 9. Summarizing results — 100 XP `</>`
-- [ ] **Capstone — Chapter 4**
+## Chapter 4 — Beyond window functions (750 / 750 XP) ✅
+- [x] 1. Pivoting — 50 XP ▶
+- [x] 2. A basic pivot — 100 XP `</>`
+- [x] 3. Pivoting with ranking — 100 XP `</>`
+- [x] 4. ROLLUP and CUBE — 50 XP ▶
+- [x] 5. Country-level subtotals — 100 XP `</>`
+- [x] 6. All group-level subtotals — 100 XP `</>`
+- [x] 7. A survey of useful functions — 50 XP ▶
+- [x] 8. Cleaning up results — 100 XP `</>`
+- [x] 9. Summarizing results — 100 XP `</>`
+- [x] **Capstone — Chapter 4**
 
 ### Mistakes log — PostgreSQL Summary Stats and Window Functions
 _(empty)_

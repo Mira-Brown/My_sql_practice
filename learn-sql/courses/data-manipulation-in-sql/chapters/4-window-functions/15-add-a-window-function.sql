@@ -13,7 +13,7 @@
 --      aliased as home_goal_rank.
 --   3. ORDER BY home.season, home_goal_rank.
 
--- TODO: define home and away CTEs
+-- TODO:
 WITH home AS (
     SELECT m.id, m.season,
            t.team_long_name AS home_team,
@@ -26,7 +26,6 @@ WITH home AS (
            m.away_goal    
     FROM match AS m
     JOIN team AS t ON m.awayteam_id = t.team_api_id )
--- TODO: SELECT with RANK() window function, ordered by season and rank
 SELECT home.id, home.season,
        home_team, away_team,
        home_goal, away_goal,

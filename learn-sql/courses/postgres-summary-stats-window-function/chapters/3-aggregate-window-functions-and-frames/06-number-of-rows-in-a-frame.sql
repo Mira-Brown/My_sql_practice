@@ -1,6 +1,18 @@
 -- Lesson 6: Number of rows in a frame
 -- Type: Theory ☰ (50 XP)
--- Engine: PostgreSQL — table summer_medals (Summer Olympic medals). DB built via ../../database/setup.sh
+-- Engine: PostgreSQL — table summer_medals (DB: postgres_summary_stats)
+
+-- REFERENCE — frame boundary combinations and how many rows they cover:
 --
--- Instructor fills brief / runnable example / TODO starter here during the lesson.
--- (No solution committed to chapters/.)
+--   ROWS BETWEEN UNBOUNDED PRECEDING AND CURRENT ROW
+--     → grows: 1, 2, 3, ... n  (running total / max / min)
+--
+--   ROWS BETWEEN CURRENT ROW AND UNBOUNDED FOLLOWING
+--     → shrinks: n, n-1, n-2, ... 1  (suffix aggregate)
+--
+--   ROWS BETWEEN 1 PRECEDING AND CURRENT ROW   → max 2 rows (current + 1 before)
+--   ROWS BETWEEN 2 PRECEDING AND CURRENT ROW   → max 3 rows (current + 2 before)
+--   ROWS BETWEEN 1 PRECEDING AND 1 FOLLOWING   → max 3 rows (centred window)
+--
+--   ROWS BETWEEN UNBOUNDED PRECEDING AND UNBOUNDED FOLLOWING
+--     → always all rows in the partition (same as no ORDER BY at all)

@@ -12,6 +12,6 @@
 -- TODO: write your LEFT JOIN query here
 SELECT c.name AS country, p.president
 FROM countries AS c
-LEFT JOIN presidents
-     ON c.name = p.president;     
+LEFT JOIN presidents AS p
+     ON c.name = p.country;     
  

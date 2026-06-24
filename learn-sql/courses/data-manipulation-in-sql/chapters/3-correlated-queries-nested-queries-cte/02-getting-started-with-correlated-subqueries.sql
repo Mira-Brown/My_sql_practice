@@ -15,6 +15,7 @@ SELECT
     m.away_goal
 FROM match AS m
 WHERE m.home_goal > (
-    SELECT AVG(home_goal) FROM match AS i
-   WHERE i.country_id = m.country_id
+    SELECT AVG(home_goal) 
+    FROM match AS i
+    WHERE i.country_id = m.country_id
 );

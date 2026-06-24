@@ -8,10 +8,14 @@
 --      Note: DISTINCT applies to the combination of all selected columns.
 
 -- TODO: 1. Distinct countries
-
+SELECT DISTINCT country
+FROM films;
 
 -- TODO: 2. Distinct certifications
-
+SELECT DISTINCT certification
+FROM films;
 
 -- TODO: 3. Distinct language + country combinations
-
+SELECT DISTINCT language,
+                country
+FROM films;

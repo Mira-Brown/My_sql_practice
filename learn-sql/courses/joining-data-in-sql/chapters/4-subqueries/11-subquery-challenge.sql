@@ -15,11 +15,11 @@
 
 SELECT country_code, pop_density
 FROM (
-    SELECT populations.country_code, 
-    populations.size / countries.surface_area AS pop_density
-    FROM populations
-    JOIN countries ON populations.country_code = countries.code
-    WHERE populations.year = 2015
+    SELECT p.country_code, 
+    p.size / c.surface_area AS pop_density
+    FROM populations As p
+    JOIN countries AS c ON p.country_code = c.code
+    WHERE p.year = 2015
 ) AS subq
 ORDER BY pop_density DESC
 LIMIT 5;

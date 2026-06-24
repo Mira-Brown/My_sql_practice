@@ -16,7 +16,7 @@
 --   3. Filter to season '2011/2012'.
 --   4. ORDER BY home_team, id.
 
--- TODO: define home CTE
+-- TODO
 WITH home AS (
     SELECT m.id, m.season,
            t.team_long_name AS home_team,
@@ -24,8 +24,6 @@ WITH home AS (
     FROM match AS m
     JOIN team AS t ON m.hometeam_id = t.team_api_id
 )
-
--- TODO: SELECT from home, filter to 2011/2012, order by home_team, id
 SELECT id, season, home_team, home_goal
 FROM home
 WHERE season = '2011/2012'

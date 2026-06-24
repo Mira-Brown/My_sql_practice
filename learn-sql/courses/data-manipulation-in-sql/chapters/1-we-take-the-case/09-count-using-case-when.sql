@@ -1,6 +1,6 @@
 -- Exercise: COUNT using CASE WHEN
 
-;
+
 -- Objective: Count home wins, away wins, and draws per season across all matches.
 --
 -- Instructions:
