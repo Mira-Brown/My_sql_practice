@@ -1,0 +1,12 @@
+-- ============================================================
+-- CAPSTONE — Chapter 2: Working with DATE/TIME Functions and Operators
+-- ============================================================
+-- Engine: PostgreSQL — Sakila DVD-rental database.
+-- Scenario: realistic data-manipulation task combining every
+-- technique from this chapter (date/time arithmetic, NOW/CURRENT_*, EXTRACT, DATE_TRUNC).
+--
+-- Instructor writes the full brief + requirements here when the
+-- student reaches the end of the chapter. (No solution committed.)
+-- ============================================================
+
+-- Write your query below:

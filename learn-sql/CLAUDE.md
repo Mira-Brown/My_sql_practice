@@ -48,6 +48,14 @@ Tracked in `COURSE.md` under **Active course**. Switch by updating that field. A
 - Requires a running local PostgreSQL server. If none is running, tell the student to start one (`brew services start postgresql@16`) — do **not** try to spin one up yourself.
 - See **Schema: postgres-summary-stats-window-function** below.
 
+### 5. `functions-for-manipulating-data-in-postgres` — Functions for Manipulating Data in PostgreSQL (Sakila DVD-rental dataset)
+- **Engine: PostgreSQL, NOT SQLite.** Uses ARRAY columns, `INTERVAL`/`EXTRACT`/`DATE_TRUNC`, `tsvector` full-text search, user-defined types, and the `fuzzystrmatch` + `pg_trgm` extensions. **Use `psql`, never `sqlite3`.**
+- Topics, chapters live under `courses/functions-for-manipulating-data-in-postgres/`. No `csv/` dir — data is fetched over the network at load time.
+- DB: PostgreSQL database `sakila` (no `.db` file — lives in the running server)
+- Rebuild: `./setup.sh` from `database/`, or `psql -d sakila -f setup.sql`. Load needs a **superuser + internet** (`COPY ... FROM PROGRAM 'curl …'`).
+- Requires a running local PostgreSQL server — do **not** try to spin one up yourself; tell the student to start one.
+- See **Schema: functions-for-manipulating-data-in-postgres** below.
+
 ## Generic workspace map (per course)
 - `courses/<course>/topics/` — DataCamp chapter lesson lists (source of truth for order and XP)
 - `courses/<course>/csv/` — raw CSVs
@@ -337,6 +345,82 @@ GROUP BY country, athlete;
 
 ---
 
+## Schema: functions-for-manipulating-data-in-postgres
+
+**PostgreSQL** (not SQLite). The classic **Sakila** DVD-rental schema, 15 tables, loaded from `database/postgres-sakila-schema_v3.sql` (which pulls each table's data via `COPY ... FROM PROGRAM 'curl …'`).
+
+### Tables (core)
+
+**`film`** — one row per film title
+| column | type | notes |
+|---|---|---|
+| `film_id` | smallint | |
+| `title` | varchar(255) | |
+| `description` | text | used in full-text-search lessons |
+| `release_year` | `year` | **user-defined DOMAIN** (integer 1901–2155) |
+| `language_id` | smallint | → language |
+| `rental_duration` | smallint | days |
+| `rental_rate` | numeric(4,2) | |
+| `length` | smallint | minutes |
+| `replacement_cost` | numeric(5,2) | |
+| `rating` | varchar(6) | 'G'/'PG'/'PG-13'/'R'/'NC-17' |
+| `special_features` | **`text[]`** | **ARRAY** — Ch1 ANY/@> lessons depend on this |
+| `last_update` | timestamp | |
+
+Other tables: **actor**, **category**, **language**, **customer**, **address**, **city**, **country**, **inventory**, **rental** (`rental_date`, `return_date` — used in date/time lessons), **payment** (`amount`, `payment_date`), **staff**, **store**, and link tables **film_actor**, **film_category**.
+
+### Relationships
+```
+film ──< film_actor >── actor
+film ──< film_category >── category
+film ── language
+film ──< inventory ──< rental ──< payment
+customer ──< rental
+customer ── address ── city ── country
+```
+
+### User-defined types + extensions (created by setup.sql — needed for Ch4)
+- **`year`** — DOMAIN over integer. Ch4 "Getting info about user-defined data types" queries `pg_type` / `\dT` for it.
+- **`mpaa_rating`** — ENUM ('G','PG','PG-13','R','NC-17'). The other user-defined type Ch4 inspects.
+- **`fuzzystrmatch`** extension — `levenshtein()`, `soundex()` (Ch4 similarity / Levenshtein lessons).
+- **`pg_trgm`** extension — `similarity()`, `word_similarity()` (Ch4 "Measuring similarity").
+
+### Engine / data gotchas (teach these)
+- **Run everything with `psql`**, e.g. `psql -d sakila -c "..."`. No SQLite dot-commands.
+- `special_features` is `text[]` — index as `special_features[1]`, search with `'Trailers' = ANY(special_features)` or `special_features @> ARRAY['Trailers']` (the exact Ch1 exercises).
+- The provided `postgres-sakila-schema_v3.sql` had 3 bugs, **fixed in-file**: `language` table missing `)`, `special_features` was plain `text` (now `text[]`), and `release_year year` needs the `year` DOMAIN (created in `setup.sql` before the schema is `\i`-ed).
+- Full-text search: `to_tsvector('english', title)` `@@` `to_tsquery('english', 'word')`.
+- Date/time: `rental` has `rental_date` + `return_date`; expected return = `rental_date + rental_duration * INTERVAL '1 day'` (join `film` via `inventory`).
+
+### Common query patterns
+```sql
+-- films whose special_features array contains 'Trailers' (Ch1)
+SELECT title, special_features
+FROM film
+WHERE special_features @> ARRAY['Trailers']::text[];
+
+-- expected return date from rental + film.rental_duration (Ch2 INTERVAL)
+SELECT r.rental_id,
+       r.rental_date,
+       r.rental_date + f.rental_duration * INTERVAL '1 day' AS expected_return
+FROM rental AS r
+JOIN inventory AS i ON r.inventory_id = i.inventory_id
+JOIN film AS f      ON i.film_id = f.film_id;
+
+-- title full-text search (Ch4)
+SELECT title, description
+FROM film
+WHERE to_tsvector('english', title) @@ to_tsquery('english', 'elf');
+
+-- levenshtein distance after enabling fuzzystrmatch (Ch4)
+SELECT levenshtein('GUMBO', 'GAMBOL');
+```
+
+### Indexes
+`film(language_id)`, `inventory(film_id)`, `rental(inventory_id)`, `rental(customer_id)`, `payment(rental_id)`, `payment(customer_id)`, `film_actor(film_id)`, `film_category(film_id)`, `customer(address_id)`, `address(city_id)`, `city(country_id)`.
+
+---
+
 ## Lesson types
 
 | XP | DataCamp icon | Type | Format |
@@ -402,6 +486,10 @@ sqlite3 courses/data-manipulation-in-sql/database/data-manipulation-in-sql.db "S
 # postgres-summary-stats-window-function  (PostgreSQL — psql, not sqlite3)
 psql -d postgres_summary_stats -f <query-file.sql>
 psql -d postgres_summary_stats -c "SELECT ..."
+
+# functions-for-manipulating-data-in-postgres  (PostgreSQL — psql, not sqlite3)
+psql -d sakila -f <query-file.sql>
+psql -d sakila -c "SELECT ..."
 ```
 
 ## After every lesson — update COURSE.md

@@ -2,7 +2,7 @@
 
 DataCamp-style, instructor-led SQL courses you take through Claude Code. Each course runs against a local SQLite database. No internet, no signups.
 
-Four courses currently available:
+Five courses currently available:
 
 | # | Course | Lessons | XP | Dataset | Engine | Status |
 |---|---|---|---|---|---|---|
@@ -10,8 +10,9 @@ Four courses currently available:
 | 2 | Joining Data in SQL | 47 | 3950 | countries + leaders | SQLite | ✅ complete |
 | 3 | Data Manipulation in SQL | 55 | 4700 | European Soccer | SQLite | 🟢 ready |
 | 4 | PostgreSQL Summary Stats and Window Functions | 44 | 3550 | Summer Olympic medals | **PostgreSQL** | 🟢 ready |
+| 5 | Functions for Manipulating Data in PostgreSQL | 50 | 4200 | Sakila DVD rental | **PostgreSQL** | 🟢 ready |
 
-> Course 4 runs on **PostgreSQL**, not SQLite — it uses `crosstab()` pivots, `ROLLUP`/`CUBE`, and full window-frame syntax. You need a local Postgres server (see §10).
+> Courses 4 and 5 run on **PostgreSQL**, not SQLite. Course 4 uses `crosstab()`/`ROLLUP`/`CUBE`/window frames; course 5 uses ARRAY columns, `INTERVAL`/`EXTRACT`/`DATE_TRUNC`, `tsvector` full-text search, and the `fuzzystrmatch` + `pg_trgm` extensions. Both need a local Postgres server (see §10).
 
 ---
 
@@ -56,21 +57,30 @@ learn-sql/
     │   │   └── setup.sql
     │   ├── chapters/
     │   └── solutions/
-    └── postgres-summary-stats-window-function/   ← PostgreSQL, not SQLite
+    ├── postgres-summary-stats-window-function/   ← PostgreSQL, not SQLite
+    │   ├── topics/
+    │   ├── csv/                           (summer.csv — Olympic medals)
+    │   ├── database/
+    │   │   ├── setup.sql                  ← psql script (\copy load)
+    │   │   └── setup.sh                   ← createdb + load helper
+    │   ├── chapters/
+    │   └── solutions/
+    └── functions-for-manipulating-data-in-postgres/   ← PostgreSQL, not SQLite
         ├── topics/
-        ├── csv/                           (summer.csv — Olympic medals)
         ├── database/
-        │   ├── setup.sql                  ← psql script (\copy load)
+        │   ├── postgres-sakila-schema_v3.sql   ← tables + COPY-from-curl data load
+        │   ├── setup.sql                  ← types + schema + extensions orchestrator
         │   └── setup.sh                   ← createdb + load helper
         ├── chapters/
         └── solutions/
 ```
+> Course 5 has no `csv/` dir — its data is fetched over the network by `COPY ... FROM PROGRAM 'curl …'` inside the schema file (needs a superuser + internet).
 
 ---
 
 ## 3. Picking a course
 
-Open `COURSE.md` — first line shows **Active course**. Edit it to switch between `intermediate-sql`, `joining-data-in-sql`, `data-manipulation-in-sql`, and `postgres-summary-stats-window-function`, or tell the instructor "switch to postgres-summary-stats-window-function".
+Open `COURSE.md` — first line shows **Active course**. Edit it to switch between `intermediate-sql`, `joining-data-in-sql`, `data-manipulation-in-sql`, `postgres-summary-stats-window-function`, and `functions-for-manipulating-data-in-postgres`, or tell the instructor "switch to functions-for-manipulating-data-in-postgres".
 
 ---
 
@@ -163,6 +173,11 @@ sqlite3 courses/data-manipulation-in-sql/database/data-manipulation-in-sql.db "S
 psql -d postgres_summary_stats
 psql -d postgres_summary_stats -f path/to/file.sql
 psql -d postgres_summary_stats -c "SELECT COUNT(*) FROM summer_medals;"
+
+# Functions for Manipulating Data in PostgreSQL  (PostgreSQL — use psql, not sqlite3)
+psql -d sakila
+psql -d sakila -f path/to/file.sql
+psql -d sakila -c "SELECT COUNT(*) FROM film;"
 ```
 
 Inside the SQLite shell:
@@ -175,10 +190,12 @@ SELECT * FROM countries LIMIT 5;
 .quit
 ```
 
-Inside the psql shell (course 4):
+Inside the psql shell (courses 4 & 5):
 ```
 \dt
-\d summer_medals
+\d summer_medals      -- course 4   (\d film for course 5)
+\dT                   -- list user-defined types (course 5 Ch4)
+\dx                   -- list installed extensions (course 5 Ch4)
 SELECT * FROM summer_medals LIMIT 5;
 \q
 ```
@@ -232,6 +249,20 @@ Single table, one row per medal won (31165 rows):
 
 Needs a running PostgreSQL server. The `tablefunc` extension (for `crosstab()` in Chapter 4) is created by `setup.sql`.
 
+### `sakila` — DVD-rental store (**PostgreSQL**)
+The classic Sakila schema (15 tables). Core relationships:
+```
+film ──< film_actor >── actor        film ──< film_category >── category
+film ──< inventory ──< rental ──< payment
+customer ──< rental                  customer ── address ── city ── country
+```
+- **film** — `film_id`, `title`, `description`, `release_year` (`year` domain), `language_id`, `rental_duration`, `rental_rate`, `length`, `replacement_cost`, `rating`, `special_features` (**`text[]` array**), `last_update`
+- **actor**, **category**, **language**, **customer**, **address**, **city**, **country**, **inventory**, **rental**, **payment**, **staff**, **store**, plus link tables **film_actor** / **film_category**
+
+User-defined types: `year` (DOMAIN), `mpaa_rating` (ENUM). Extensions: `fuzzystrmatch` (levenshtein), `pg_trgm` (similarity). All created by `setup.sql`.
+
+**Data load needs a superuser + internet** — the schema pulls each table from DataCamp via `COPY ... FROM PROGRAM 'curl …'`.
+
 ### Rebuilding a DB
 
 ```bash
@@ -256,6 +287,13 @@ cd courses/postgres-summary-stats-window-function/database
 # or manually:
 #   createdb postgres_summary_stats
 #   psql -v ON_ERROR_STOP=1 -d postgres_summary_stats -f setup.sql
+
+# functions-for-manipulating-data-in-postgres  (PostgreSQL — superuser + internet)
+cd courses/functions-for-manipulating-data-in-postgres/database
+./setup.sh                       # createdb sakila + load (curl-fetches data)
+# or manually:
+#   createdb sakila
+#   psql -v ON_ERROR_STOP=1 -d sakila -f setup.sql
 ```
 
 Row-count summary prints after each rebuild — verify all tables loaded.
@@ -296,6 +334,14 @@ Row-count summary prints after each rebuild — verify all tables loaded.
 | 3 | Aggregate window functions and frames | 12 | 950 |
 | 4 | Beyond window functions | 9 | 750 |
 
+### Functions for Manipulating Data in PostgreSQL (50 lessons, 4200 XP) — **PostgreSQL**
+| Ch | Title | Lessons | XP |
+|---|---|---|---|
+| 1 | Overview of Common Data Types | 11 | 850 |
+| 2 | Working with DATE/TIME Functions and Operators | 12 | 1000 |
+| 3 | Parsing and Manipulating Text | 13 | 1150 |
+| 4 | Full-text Search and PostgreSQL Extensions | 14 | 1200 |
+
 Each chapter ends with a **capstone** (`chapters/<N>-<name>/capstone.sql`) — a realistic analysis brief combining everything in that chapter.
 
 ---
@@ -322,4 +368,5 @@ sqlite3 courses/intermediate-sql/database/intermediate-sql.db
 sqlite3 courses/joining-data-in-sql/database/joining-data-in-sql.db
 sqlite3 courses/data-manipulation-in-sql/database/data-manipulation-in-sql.db
 psql -d postgres_summary_stats          # course 4 — PostgreSQL
+psql -d sakila                          # course 5 — PostgreSQL
 ```

@@ -1,0 +1,6 @@
+-- Lesson 8: Working with ARRAYs
+-- Type: Video ▶ (50 XP)
+-- Engine: PostgreSQL — Sakila DVD-rental DB (table set: film, actor, rental, payment, customer, …). Built via ../../database/setup.sh
+--
+-- Instructor fills brief / runnable example / TODO starter here during the lesson.
+-- (No solution committed to chapters/.)

@@ -1,0 +1,26 @@
+Overview of Common Data Types
+
+Learn about the properties and characteristics of common data types including strings, numerics and arrays and how to retrieve information about your database.
+
+Welcome!
+50 XP
+Text data types
+50 XP
+Getting information about your database
+100 XP
+Determining data types
+100 XP
+Date and time data types
+50 XP
+Properties of date and time data types
+50 XP
+Interval data types
+100 XP
+Working with ARRAYs
+50 XP
+Accessing data in an ARRAY
+100 XP
+Searching an ARRAY with ANY
+100 XP
+Searching an ARRAY with @>
+100 XP

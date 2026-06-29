@@ -1,0 +1,28 @@
+Working with DATE/TIME Functions and Operators
+
+Explore how to manipulate and query date and time objects including how to use the current timestamp in your queries, extract subfields from existing date and time fields and what to expect when you perform date and time arithmetic.
+
+Overview of basic arithmetic operators
+50 XP
+Adding and subtracting date and time values
+100 XP
+INTERVAL arithmetic
+100 XP
+Calculating the expected return date
+100 XP
+Functions for retrieving current date/time
+50 XP
+Current timestamp functions
+50 XP
+Working with the current date and time
+100 XP
+Manipulating the current date and time
+100 XP
+Extracting and transforming date/ time data
+50 XP
+Using EXTRACT
+100 XP
+Using DATE_TRUNC
+100 XP
+Putting it all together
+100 XP

@@ -1,0 +1,12 @@
+-- ============================================================
+-- CAPSTONE — Chapter 4: Full-text Search and PostgreSQL Extensions
+-- ============================================================
+-- Engine: PostgreSQL — Sakila DVD-rental database.
+-- Scenario: realistic data-manipulation task combining every
+-- technique from this chapter (LIKE, tsvector/to_tsquery, user-defined types/functions, fuzzystrmatch + pg_trgm).
+--
+-- Instructor writes the full brief + requirements here when the
+-- student reaches the end of the chapter. (No solution committed.)
+-- ============================================================
+
+-- Write your query below:

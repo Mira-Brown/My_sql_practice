@@ -1,0 +1,12 @@
+-- ============================================================
+-- CAPSTONE — Chapter 1: Overview of Common Data Types
+-- ============================================================
+-- Engine: PostgreSQL — Sakila DVD-rental database.
+-- Scenario: realistic data-manipulation task combining every
+-- technique from this chapter (text/numeric types, INTERVAL, ARRAY access + ANY/@>).
+--
+-- Instructor writes the full brief + requirements here when the
+-- student reaches the end of the chapter. (No solution committed.)
+-- ============================================================
+
+-- Write your query below:

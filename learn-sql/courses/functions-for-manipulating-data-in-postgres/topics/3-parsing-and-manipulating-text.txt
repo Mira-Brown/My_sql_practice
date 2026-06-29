@@ -1,0 +1,30 @@
+Parsing and Manipulating Text
+
+Learn how to manipulate string and text data by transforming case, parsing and truncating text and extracting substrings from larger strings.
+
+Reformatting string and character data
+50 XP
+Concatenating strings
+100 XP
+Changing the case of string data
+100 XP
+Replacing string data
+100 XP
+Parsing string and character data
+50 XP
+Determining the length of strings
+100 XP
+Truncating strings
+100 XP
+Extracting substrings from text data
+100 XP
+Combining functions for string manipulation
+100 XP
+Truncating and padding string data
+50 XP
+Padding
+100 XP
+The TRIM function
+100 XP
+Putting it all together
+100 XP

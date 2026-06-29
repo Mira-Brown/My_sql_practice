@@ -1,0 +1,32 @@
+Full-text Search and PostgresSQL Extensions
+
+An introduction into some more advanced capabilities of PostgreSQL like full-text search and extensions.
+Introduction to full-text search
+
+50 XP
+A review of the LIKE operator
+100 XP
+What is a tsvector?
+100 XP
+Basic full-text search
+100 XP
+Extending PostgreSQL
+50 XP
+User-defined data types
+100 XP
+Getting info about user-defined data types
+100 XP
+User-defined functions in Sakila
+100 XP
+Intro to PostgreSQL extensions
+50 XP
+Enabling extensions
+100 XP
+Measuring similarity between two strings
+100 XP
+Levenshtein distance examples
+100 XP
+Putting it all together
+100 XP
+Wrap Up
+50 XP

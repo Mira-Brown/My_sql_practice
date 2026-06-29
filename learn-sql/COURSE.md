@@ -290,3 +290,78 @@ _(empty)_
 
 ### Mistakes log — PostgreSQL Summary Stats and Window Functions
 _(empty)_
+
+---
+
+# Course 5: Functions for Manipulating Data in PostgreSQL
+
+**Engine:** PostgreSQL (database `sakila`) — run with `psql`, not `sqlite3`. Build via `database/setup.sh` (needs superuser + internet for the curl data load).
+
+**XP earned: 0 / 4200**
+
+**Current lesson:** Chapter 1, Lesson 1 — Welcome!
+
+## Chapter 1 — Overview of Common Data Types (0 / 850 XP)
+- [ ] 1. Welcome! — 50 XP ▶
+- [ ] 2. Text data types — 50 XP ▶
+- [ ] 3. Getting information about your database — 100 XP `</>`
+- [ ] 4. Determining data types — 100 XP `</>`
+- [ ] 5. Date and time data types — 50 XP ▶
+- [ ] 6. Properties of date and time data types — 50 XP ☰
+- [ ] 7. Interval data types — 100 XP `</>`
+- [ ] 8. Working with ARRAYs — 50 XP ▶
+- [ ] 9. Accessing data in an ARRAY — 100 XP `</>`
+- [ ] 10. Searching an ARRAY with ANY — 100 XP `</>`
+- [ ] 11. Searching an ARRAY with @> — 100 XP `</>`
+- [ ] **Capstone — Chapter 1**
+
+## Chapter 2 — Working with DATE/TIME Functions and Operators (0 / 1000 XP)
+- [ ] 1. Overview of basic arithmetic operators — 50 XP ▶
+- [ ] 2. Adding and subtracting date and time values — 100 XP `</>`
+- [ ] 3. INTERVAL arithmetic — 100 XP `</>`
+- [ ] 4. Calculating the expected return date — 100 XP `</>`
+- [ ] 5. Functions for retrieving current date/time — 50 XP ▶
+- [ ] 6. Current timestamp functions — 50 XP ☰
+- [ ] 7. Working with the current date and time — 100 XP `</>`
+- [ ] 8. Manipulating the current date and time — 100 XP `</>`
+- [ ] 9. Extracting and transforming date/time data — 50 XP ▶
+- [ ] 10. Using EXTRACT — 100 XP `</>`
+- [ ] 11. Using DATE_TRUNC — 100 XP `</>`
+- [ ] 12. Putting it all together — 100 XP `</>`
+- [ ] **Capstone — Chapter 2**
+
+## Chapter 3 — Parsing and Manipulating Text (0 / 1150 XP)
+- [ ] 1. Reformatting string and character data — 50 XP ▶
+- [ ] 2. Concatenating strings — 100 XP `</>`
+- [ ] 3. Changing the case of string data — 100 XP `</>`
+- [ ] 4. Replacing string data — 100 XP `</>`
+- [ ] 5. Parsing string and character data — 50 XP ▶
+- [ ] 6. Determining the length of strings — 100 XP `</>`
+- [ ] 7. Truncating strings — 100 XP `</>`
+- [ ] 8. Extracting substrings from text data — 100 XP `</>`
+- [ ] 9. Combining functions for string manipulation — 100 XP `</>`
+- [ ] 10. Truncating and padding string data — 50 XP ▶
+- [ ] 11. Padding — 100 XP `</>`
+- [ ] 12. The TRIM function — 100 XP `</>`
+- [ ] 13. Putting it all together — 100 XP `</>`
+- [ ] **Capstone — Chapter 3**
+
+## Chapter 4 — Full-text Search and PostgreSQL Extensions (0 / 1200 XP)
+- [ ] 1. Introduction to full-text search — 50 XP ▶
+- [ ] 2. A review of the LIKE operator — 100 XP `</>`
+- [ ] 3. What is a tsvector? — 100 XP `</>`
+- [ ] 4. Basic full-text search — 100 XP `</>`
+- [ ] 5. Extending PostgreSQL — 50 XP ▶
+- [ ] 6. User-defined data types — 100 XP `</>`
+- [ ] 7. Getting info about user-defined data types — 100 XP `</>`
+- [ ] 8. User-defined functions in Sakila — 100 XP `</>`
+- [ ] 9. Intro to PostgreSQL extensions — 50 XP ▶
+- [ ] 10. Enabling extensions — 100 XP `</>`
+- [ ] 11. Measuring similarity between two strings — 100 XP `</>`
+- [ ] 12. Levenshtein distance examples — 100 XP `</>`
+- [ ] 13. Putting it all together — 100 XP `</>`
+- [ ] 14. Wrap Up — 50 XP ▶
+- [ ] **Capstone — Chapter 4**
+
+### Mistakes log — Functions for Manipulating Data in PostgreSQL
+_(empty)_

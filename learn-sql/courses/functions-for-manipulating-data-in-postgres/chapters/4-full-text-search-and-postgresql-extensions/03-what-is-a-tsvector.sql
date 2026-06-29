@@ -1,0 +1,6 @@
+-- Lesson 3: What is a tsvector?
+-- Type: Exercise </> (100 XP)
+-- Engine: PostgreSQL — Sakila DVD-rental DB (table set: film, actor, rental, payment, customer, …). Built via ../../database/setup.sh
+--
+-- Instructor fills brief / runnable example / TODO starter here during the lesson.
+-- (No solution committed to chapters/.)

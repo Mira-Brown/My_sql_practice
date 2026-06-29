@@ -1,0 +1,12 @@
+-- ============================================================
+-- CAPSTONE — Chapter 3: Parsing and Manipulating Text
+-- ============================================================
+-- Engine: PostgreSQL — Sakila DVD-rental database.
+-- Scenario: realistic data-manipulation task combining every
+-- technique from this chapter (CONCAT, UPPER/LOWER/INITCAP, REPLACE, LENGTH, LEFT/SUBSTRING, LPAD/RPAD, TRIM).
+--
+-- Instructor writes the full brief + requirements here when the
+-- student reaches the end of the chapter. (No solution committed.)
+-- ============================================================
+
+-- Write your query below:
