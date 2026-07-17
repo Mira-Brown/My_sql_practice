@@ -12,6 +12,6 @@ SELECT
     year,
     ROW_NUMBER() OVER (ORDER BY year) As row_n
 FROM (
-       SELECT DISTINCT year FROM summer_medals WHERE discipline = 'Weightlifting'
+       SELECT DISTINCT year FROM su WHERE discipline = 'Weightlifting'
 ) AS y
 ORDER BY year ASC;

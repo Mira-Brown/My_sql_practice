@@ -25,3 +25,4 @@ GROUP BY
     country, athlete
 ORDER BY
     rank, athlete;
+

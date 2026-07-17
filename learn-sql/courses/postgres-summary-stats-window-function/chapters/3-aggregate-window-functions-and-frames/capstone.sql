@@ -46,3 +46,4 @@ with_windows AS (
 )
 SELECT * FROM with_windows
 ORDER BY country, year;
+

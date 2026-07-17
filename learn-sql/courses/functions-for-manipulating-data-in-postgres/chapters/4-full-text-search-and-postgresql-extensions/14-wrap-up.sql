@@ -1,6 +1,26 @@
 -- Lesson 14: Wrap Up
 -- Type: Video ▶ (50 XP)
--- Engine: PostgreSQL — Sakila DVD-rental DB (table set: film, actor, rental, payment, customer, …). Built via ../../database/setup.sh
+-- Engine: PostgreSQL — psql -d sakila
 --
--- Instructor fills brief / runnable example / TODO starter here during the lesson.
--- (No solution committed to chapters/.)
+-- Course summary — key functions by chapter:
+--
+-- Ch1: data types
+--   ARRAY access: special_features[1], ANY(), @>
+--   Interval:     rental_date + INTERVAL '3 days'
+--
+-- Ch2: date/time
+--   EXTRACT(year FROM rental_date)
+--   DATE_TRUNC('month', rental_date)
+--   NOW(), CURRENT_DATE, CURRENT_TIMESTAMP
+--
+-- Ch3: text manipulation
+--   UPPER/LOWER/INITCAP, CHAR_LENGTH
+--   LEFT/RIGHT, SUBSTRING, POSITION
+--   REPLACE, TRIM, LPAD, RPAD
+--
+-- Ch4: search & extensions
+--   to_tsvector('english', text) @@ to_tsquery('english', 'word')
+--   similarity(a, b)        -- pg_trgm: 0.0–1.0
+--   levenshtein(a, b)       -- fuzzystrmatch: edit distance
+--   soundex / metaphone     -- phonetic codes
+--   pg_type / pg_enum / information_schema.routines  -- catalog introspection

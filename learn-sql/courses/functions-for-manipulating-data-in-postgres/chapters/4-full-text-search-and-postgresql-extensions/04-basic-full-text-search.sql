@@ -1,6 +1,20 @@
 -- Lesson 4: Basic full-text search
 -- Type: Exercise </> (100 XP)
--- Engine: PostgreSQL — Sakila DVD-rental DB (table set: film, actor, rental, payment, customer, …). Built via ../../database/setup.sh
+-- Engine: PostgreSQL — psql -d sakila
 --
--- Instructor fills brief / runnable example / TODO starter here during the lesson.
--- (No solution committed to chapters/.)
+-- Exercise: Search film descriptions with full-text search
+-- Objective: Use to_tsvector() + to_tsquery() + the @@ operator to find films
+--            whose description matches a search term.
+--
+-- Recall: @@ is the match operator between a tsvector and a tsquery.
+
+-- Solution
+
+SELECT
+    title,
+     description
+FROM film
+WHERE
+    to_tsvector('english',description) @@ to_tsquery('english', 'fateful')
+ORDER BY title ASC
+;

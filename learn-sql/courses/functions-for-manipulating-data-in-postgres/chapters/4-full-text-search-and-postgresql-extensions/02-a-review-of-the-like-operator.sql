@@ -1,6 +1,22 @@
 -- Lesson 2: A review of the LIKE operator
 -- Type: Exercise </> (100 XP)
--- Engine: PostgreSQL — Sakila DVD-rental DB (table set: film, actor, rental, payment, customer, …). Built via ../../database/setup.sh
+-- Engine: PostgreSQL — psql -d sakila
 --
--- Instructor fills brief / runnable example / TODO starter here during the lesson.
--- (No solution committed to chapters/.)
+-- Exercise: Find films using LIKE pattern matching
+-- Objective: Practice LIKE / NOT LIKE / wildcards before we replace them with full-text search
+
+--
+-- Hint: LIKE is case-sensitive in PostgreSQL — all titles in the sakila DB are uppercase.
+-- Wildcards: % matches any sequence of characters, _ matches exactly one character.
+
+-- Solution
+
+SELECT
+     title,
+     description
+FROM film
+WHERE
+   title LIKE 'ELF%'
+    AND title NOT LIKE '%MURDER%'
+ORDER BY title ASC;
+

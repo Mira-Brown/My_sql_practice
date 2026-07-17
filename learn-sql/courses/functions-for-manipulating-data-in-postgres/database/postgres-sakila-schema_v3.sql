@@ -148,15 +148,15 @@ CREATE TABLE store (
 
 COPY actor
     FROM PROGRAM 'curl "https://assets.datacamp.com/production/repositories/4471/datasets/07f3929eabddebf4c8023e76c98f3433c1761482/actor.csv"'
-	(DELIMITER ',', FORMAT CSV HEADER);
+	(DELIMITER '|', FORMAT CSV, HEADER TRUE);
 
 COPY category
     FROM PROGRAM 'curl "https://assets.datacamp.com/production/repositories/4471/datasets/c2bd9ce604c840e86b99cc0548dab7cd74948d82/category.csv"'
-	(DELIMITER ',', FORMAT CSV HEADER);
+	(DELIMITER '|', FORMAT CSV, HEADER TRUE);
 
 COPY address
     FROM PROGRAM 'curl "https://assets.datacamp.com/production/repositories/4471/datasets/e8b464342e39f69f39c125e7ff015828d61ee67c/address.csv"'
-	(DELIMITER ',', FORMAT CSV HEADER);
+	(DELIMITER '|', FORMAT CSV, HEADER TRUE);
 
 COPY customer
     FROM PROGRAM 'curl "https://assets.datacamp.com/production/repositories/4471/datasets/221a762623570dea23ff791f425046cec54d6b50/customer.csv"'
@@ -188,7 +188,7 @@ COPY store
 
 COPY film
     FROM PROGRAM 'curl "https://assets.datacamp.com/production/repositories/4471/datasets/fb3ebab37c96f20f82901265c66e2bb721934cd6/film.txt"'
-	(DELIMITER ',');
+	(FORMAT TEXT);
 
 COPY film_actor
     FROM PROGRAM 'curl "https://assets.datacamp.com/production/repositories/4471/datasets/cb6ee5c39d707149658251d1687fac4b723c0964/film_actor.csv"'
