@@ -1,0 +1,46 @@
+Start exploring a database by identifying the tables and the foreign keys that link them. Look for missing values, count the number of observations, and join tables to understand how they're related. Learn about coalescing and casting data along the way.
+
+What's in the database?
+50 XP
+Explore table sizes
+50 XP
+Count missing values
+100 XP
+Join tables
+100 XP
+The keys to the database
+50 XP
+Foreign keys
+50 XP
+Read an entity relationship diagram
+100 XP
+Coalesce
+100 XP
+Column types and constraints
+50 XP
+Effects of casting
+100 XP
+Summarize the distribution of numeric values
+100 XPStart exploring a database by identifying the tables and the foreign keys that link them. Look for missing values, count the number of observations, and join tables to understand how they're related. Learn about coalescing and casting data along the way.
+What's in the database?
+50 XP
+Explore table sizes
+50 XP
+Count missing values
+100 XP
+Join tables
+100 XP
+The keys to the database
+50 XP
+Foreign keys
+50 XP
+Read an entity relationship diagram
+100 XP
+Coalesce
+100 XP
+Column types and constraints
+50 XP
+Effects of casting
+100 XP
+Summarize the distribution of numeric values
+100 XP

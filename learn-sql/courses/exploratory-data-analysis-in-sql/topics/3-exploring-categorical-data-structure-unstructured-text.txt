@@ -1,0 +1,31 @@
+Exploring Categorical Data and Unstructured Text
+Text, or character, data can get messy, but you'll learn how to deal with inconsistencies in case, spacing, and delimiters. Learn how to use a temporary table to recode messy categorical data to standardized values you can count and aggregate. Extract new variables from unstructured text as you explore help requests submitted to the city of Evanston, IL.
+
+Character data types and common issues
+50 XP
+Count the categories
+100 XP
+Spotting character data problems
+50 XP
+Cases and spaces
+50 XP
+Trimming
+100 XP
+Exploring unstructured text
+100 XP
+Splitting and concatenating text
+50 XP
+Concatenate strings
+100 XP
+Split strings on a delimiter
+100 XP
+Shorten long strings
+100 XP
+Strategies for multiple transformations
+50 XP
+Create an "other" category
+50 XP
+Group and recode values
+100 XP
+Create a table with indicator variables
+100 XP

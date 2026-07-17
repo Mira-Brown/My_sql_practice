@@ -1,0 +1,18 @@
+-- Lesson 11: Strategies for multiple transformations
+-- Type: Video ▶ (50 XP)
+-- Engine: PostgreSQL — psql -d eda
+--
+
+-- When many messy raw values map to a few clean categories, don't nest endless
+-- CASE/replace calls. Instead:
+--   1. Build a TEMP TABLE recode (raw text, clean text) mapping messy -> standard.
+--   2. JOIN your data to recode to apply every mapping at once.
+--   3. Roll rare values into an 'Other' bucket with CASE or a threshold.
+--
+-- This keeps the transformation in DATA (easy to audit/extend) rather than buried
+-- in query logic.
+--
+-- Example skeleton:
+-- CREATE TEMP TABLE recode AS SELECT DISTINCT category AS raw, ... AS clean FROM ...;
+-- UPDATE recode SET clean = 'Other' WHERE clean IN (...);
+-- SELECT clean, count(*) FROM evanston311 JOIN recode ON category = raw GROUP BY clean;

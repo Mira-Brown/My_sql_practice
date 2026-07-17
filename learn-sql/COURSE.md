@@ -1,6 +1,6 @@
 # SQL courses — Progress
 
-**Active course:** `functions-for-manipulating-data-in-postgres`
+**Active course:** `exploratory-data-analysis-in-sql`
 
 ---
 
@@ -364,4 +364,86 @@ _(empty)_
 - [x] **Capstone — Chapter 4**
 
 ### Mistakes log — Functions for Manipulating Data in PostgreSQL
+_(empty)_
+
+---
+
+# Course 6: Exploratory Data Analysis in SQL
+
+**Engine: PostgreSQL** (database `eda`) — run with `psql`, not `sqlite3`. Build via `database/setup.sh` (loads local CSVs with `\copy` — no internet/superuser needed).
+
+**XP earned: 0 / 4650**
+
+**Current lesson:** Chapter 1, Lesson 1 — What's in the database?
+
+## Chapter 1 — What is a database? (0 / 850 XP)
+- [ ] 1. What's in the database? — 50 XP ▶
+- [ ] 2. Explore table sizes — 50 XP `</>`
+- [ ] 3. Count missing values — 100 XP `</>`
+- [ ] 4. Join tables — 100 XP `</>`
+- [ ] 5. The keys to the database — 50 XP ▶
+- [ ] 6. Foreign keys — 50 XP `</>`
+- [ ] 7. Read an entity relationship diagram — 100 XP `</>`
+- [ ] 8. Coalesce — 100 XP `</>`
+- [ ] 9. Column types and constraints — 50 XP ▶
+- [ ] 10. Effects of casting — 100 XP `</>`
+- [ ] 11. Summarize the distribution of numeric values — 100 XP `</>`
+- [ ] **Capstone — Chapter 1**
+
+## Chapter 2 — Summarizing and Aggregating Numeric Data (0 / 1300 XP)
+- [ ] 1. Numeric data types and summary functions — 50 XP ▶
+- [ ] 2. Division — 100 XP `</>`
+- [ ] 3. Explore with division — 100 XP `</>`
+- [ ] 4. Summarize numeric columns — 100 XP `</>`
+- [ ] 5. Summarize group statistics — 100 XP `</>`
+- [ ] 6. Exploring distributions — 50 XP ▶
+- [ ] 7. Truncate — 100 XP `</>`
+- [ ] 8. Generate series — 100 XP `</>`
+- [ ] 9. More summary functions — 50 XP ▶
+- [ ] 10. Correlation — 100 XP `</>`
+- [ ] 11. Mean and Median — 100 XP `</>`
+- [ ] 12. Creating temporary tables — 50 XP ▶
+- [ ] 13. Create a temp table — 100 XP `</>`
+- [ ] 14. Create a temp table to simplify a query — 100 XP `</>`
+- [ ] 15. Insert into a temp table — 100 XP `</>`
+- [ ] **Capstone — Chapter 2**
+
+## Chapter 3 — Exploring Categorical Data and Unstructured Text (0 / 1100 XP)
+- [ ] 1. Character data types and common issues — 50 XP ▶
+- [ ] 2. Count the categories — 100 XP `</>`
+- [ ] 3. Spotting character data problems — 50 XP ▶
+- [ ] 4. Cases and spaces — 50 XP `</>`
+- [ ] 5. Trimming — 100 XP `</>`
+- [ ] 6. Exploring unstructured text — 100 XP `</>`
+- [ ] 7. Splitting and concatenating text — 50 XP ▶
+- [ ] 8. Concatenate strings — 100 XP `</>`
+- [ ] 9. Split strings on a delimiter — 100 XP `</>`
+- [ ] 10. Shorten long strings — 100 XP `</>`
+- [ ] 11. Strategies for multiple transformations — 50 XP ▶
+- [ ] 12. Create an 'other' category — 50 XP `</>`
+- [ ] 13. Group and recode values — 100 XP `</>`
+- [ ] 14. Create a table with indicator variables — 100 XP `</>`
+- [ ] **Capstone — Chapter 3**
+
+## Chapter 4 — Working with Dates and Timestamps (0 / 1400 XP)
+- [ ] 1. Date/time types and formats — 50 XP ▶
+- [ ] 2. ISO 8601 — 50 XP `</>`
+- [ ] 3. Date comparisons — 100 XP `</>`
+- [ ] 4. Date arithmetic — 100 XP `</>`
+- [ ] 5. Completion time by category — 100 XP `</>`
+- [ ] 6. Date/time components and aggregation — 50 XP ▶
+- [ ] 7. Date parts — 100 XP `</>`
+- [ ] 8. Variation by day of week — 100 XP `</>`
+- [ ] 9. Date truncation — 100 XP `</>`
+- [ ] 10. Aggregating with date/time series — 50 XP ▶
+- [ ] 11. Find missing dates — 100 XP `</>`
+- [ ] 12. Custom aggregation periods — 100 XP `</>`
+- [ ] 13. Monthly average with missing dates — 100 XP `</>`
+- [ ] 14. Time between events — 50 XP ▶
+- [ ] 15. Longest gap — 100 XP `</>`
+- [ ] 16. Rats! — 100 XP `</>`
+- [ ] 17. Wrap-up — 50 XP ▶
+- [ ] **Capstone — Chapter 4**
+
+### Mistakes log — Exploratory Data Analysis in SQL
 _(empty)_

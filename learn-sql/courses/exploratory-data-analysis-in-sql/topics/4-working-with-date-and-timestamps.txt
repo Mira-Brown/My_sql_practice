@@ -1,0 +1,37 @@
+Working with Dates and Timestamps
+What time is it? In this chapter, you'll learn how to find out. You'll aggregate date/time data by hour, day, month, or year and practice both constructing time series and finding gaps in them.
+
+Date/time types and formats
+50 XP
+ISO 8601
+50 XP
+Date comparisons
+100 XP
+Date arithmetic
+100 XP
+Completion time by category
+100 XP
+Date/time components and aggregation
+50 XP
+Date parts
+100 XP
+Variation by day of week
+100 XP
+Date truncation
+100 XP
+Aggregating with date/time series
+50 XP
+Find missing dates
+100 XP
+Custom aggregation periods
+100 XP
+Monthly average with missing dates
+100 XP
+Time between events
+50 XP
+Longest gap
+100 XP
+Rats!
+100 XP
+Wrap-up
+50 XP

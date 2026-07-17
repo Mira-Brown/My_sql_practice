@@ -56,6 +56,15 @@ Tracked in `COURSE.md` under **Active course**. Switch by updating that field. A
 - Requires a running local PostgreSQL server — do **not** try to spin one up yourself; tell the student to start one.
 - See **Schema: functions-for-manipulating-data-in-postgres** below.
 
+### 6. `exploratory-data-analysis-in-sql` — Exploratory Data Analysis in SQL (Fortune 500 + StackOverflow + Evanston 311 datasets)
+- **Engine: PostgreSQL, NOT SQLite.** Uses `percentile_disc() WITHIN GROUP`, `corr()`, `generate_series()`, `date_trunc`/`EXTRACT`, temp tables, and interval arithmetic. **Use `psql`, never `sqlite3`.**
+- Topics, CSVs, chapters live under `courses/exploratory-data-analysis-in-sql/`
+- DB: PostgreSQL database `eda` (no `.db` file — lives in the running server)
+- Rebuild: `./setup.sh` from `database/`, or `psql -d eda -f setup.sql`. Data loads from the **local** `csv/` files via `\copy` — **no superuser or internet needed** (unlike the Sakila course).
+- The original DataCamp `database/sql_eda_dbcreate.sql` (curl-based `COPY … FROM PROGRAM`) is kept as a reference artifact; `setup.sql` is the local-`\copy` version actually used.
+- Requires a running local PostgreSQL server — do **not** try to spin one up yourself; tell the student to start one.
+- See **Schema: exploratory-data-analysis-in-sql** below.
+
 ## Generic workspace map (per course)
 - `courses/<course>/topics/` — DataCamp chapter lesson lists (source of truth for order and XP)
 - `courses/<course>/csv/` — raw CSVs
@@ -421,6 +430,93 @@ SELECT levenshtein('GUMBO', 'GAMBOL');
 
 ---
 
+## Schema: exploratory-data-analysis-in-sql
+
+**PostgreSQL** (not SQLite). Two dataset groups in one DB (`eda`). CSVs have **header rows** and use `NA` for NULL; `setup.sql` loads them with `\copy … (FORMAT csv, HEADER true, NULL 'NA')` from the local `csv/` dir.
+
+### Group A — companies / tags / financials
+
+**`fortune500`** (500 rows) — `title` PK, `name` UNIQUE
+| column | type | notes |
+|---|---|---|
+| `rank` | int | 1–500 |
+| `title` | varchar | **PK** |
+| `name` | varchar | UNIQUE |
+| `ticker` | char(5) | stock symbol (may be NULL) |
+| `sector`, `industry` | varchar | categoricals (some NULL) |
+| `employees` | int | CHECK > 0 |
+| `revenues` | int | USD millions |
+| `revenues_change`, `profits_change` | real | percent |
+| `profits`, `assets`, `equity` | numeric | USD millions (`assets` CHECK > 0) |
+
+**`company`** (14 rows) — `id` PK, `parent_id` **self-FK → company.id**, `ticker` UNIQUE. Cols: `id`, `exchange`, `ticker`, `name`, `parent_id`. Subsidiaries (AWS→Amazon, Google LLC→Alphabet) set `parent_id`.
+
+**`tag_company`** (56 rows) — `tag` PK, `company_id` **FK → company.id**. Maps a StackOverflow tag to the company that owns it.
+
+**`stackoverflow`** (45238 rows) — `id` serial. Cols: `tag` (**FK → tag_company.tag**), `date`, `question_count`, `question_pct`, `unanswered_count`, `unanswered_pct`. Daily question activity per tag.
+
+**`tag_type`** (61 rows) — `id` serial, `tag` (**FK → tag_company.tag**), `type`. A tag can have several types (no PK on tag — duplicates exist by design, e.g. `dropbox-api`).
+
+### Group B — messy municipal text/dates
+
+**`evanston311`** (36431 rows) — `id` PK. City-of-Evanston 311 help requests.
+| column | type | notes |
+|---|---|---|
+| `id` | int | **PK** |
+| `priority` | varchar(6) | e.g. 'HIGH', 'MEDIUM', 'NONE' |
+| `source` | varchar(20) | channel |
+| `category` | varchar(64) | messy — 'Broad - Specific' pattern, case/space issues |
+| `date_created` | timestamptz | request opened |
+| `date_completed` | timestamptz | closed (NULL if still open) |
+| `street`, `house_num`, `zip` | varchar/char | messy address parts |
+| `description` | text | free-text — search with ILIKE |
+
+### Relationships
+```
+company (1) ──< (M) tag_company ──< (M) stackoverflow   (company.id→company_id, tag→tag)
+                         └──────────< (M) tag_type
+company (1) ──< (M) company (subsidiary via parent_id, self-ref)
+fortune500 ── company                                    (join on ticker)
+evanston311 — standalone (no FKs; the text/date-cleaning table)
+```
+
+### Engine notes (teach these)
+- **Run everything with `psql`**, e.g. `psql -d eda -c "..."`. No SQLite dot-commands.
+- Median = `percentile_disc(0.5) WITHIN GROUP (ORDER BY col)`; also `corr(y,x)`, `var_pop`, `stddev`.
+- Integer/integer truncates → cast one side `::numeric` for real division.
+- Distributions: `trunc(val, -N)` to bucket; `generate_series(a,b,step)` for bin/date spines.
+- Dates: subtract timestamps → `interval`; `date_trunc('month', ts)`, `EXTRACT`/`date_part('dow', ts)`, `to_char(ts,'Day')`. Fill gaps with `generate_series` + LEFT JOIN + `coalesce(count,0)`.
+- Text cleaning: `lower`/`trim`/`ltrim`, `split_part(str,' - ',n)`, `left`, `||`/`concat`, `ILIKE '%...%'`.
+- Temp tables: `CREATE TEMP TABLE x AS SELECT …` (session-scoped) to stage/recode.
+
+### Common query patterns
+```sql
+-- questions per company (company→tag_company→stackoverflow)
+SELECT c.name, sum(so.question_count) AS questions
+FROM company c
+JOIN tag_company tc ON c.id = tc.company_id
+JOIN stackoverflow so ON tc.tag = so.tag
+GROUP BY c.name ORDER BY questions DESC;
+
+-- mean vs median revenues (skew check)
+SELECT avg(revenues) AS mean,
+       percentile_disc(0.5) WITHIN GROUP (ORDER BY revenues) AS median
+FROM fortune500;
+
+-- monthly 311 requests with no-gap spine
+SELECT months.month, count(e.id) AS requests
+FROM (SELECT generate_series(date_trunc('month',(SELECT min(date_created) FROM evanston311)),
+                             date_trunc('month',(SELECT max(date_created) FROM evanston311)),
+                             '1 month') AS month) months
+LEFT JOIN evanston311 e ON date_trunc('month', e.date_created) = months.month
+GROUP BY months.month ORDER BY months.month;
+```
+
+### Indexes
+`tag_company(company_id)`, `stackoverflow(tag)`, `stackoverflow(date)`, `tag_type(tag)`, `company(parent_id)`, `fortune500(sector)`, `fortune500(ticker)`, `evanston311(category)`, `evanston311(date_created)`, `evanston311(date_completed)`.
+
+---
+
 ## Lesson types
 
 | XP | DataCamp icon | Type | Format |
@@ -490,6 +586,10 @@ psql -d postgres_summary_stats -c "SELECT ..."
 # functions-for-manipulating-data-in-postgres  (PostgreSQL — psql, not sqlite3)
 psql -d sakila -f <query-file.sql>
 psql -d sakila -c "SELECT ..."
+
+# exploratory-data-analysis-in-sql  (PostgreSQL — psql, not sqlite3)
+psql -d eda -f <query-file.sql>
+psql -d eda -c "SELECT ..."
 ```
 
 ## After every lesson — update COURSE.md

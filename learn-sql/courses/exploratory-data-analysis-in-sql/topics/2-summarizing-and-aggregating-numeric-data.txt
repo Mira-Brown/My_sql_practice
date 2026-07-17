@@ -1,0 +1,34 @@
+Summarizing and Aggregating Numeric Data
+
+You'll build on functions like min and max to summarize numeric data in new ways. Add average, variance, correlation, and percentile functions to your toolkit, and learn how to truncate and round numeric values too. Build complex queries and save your results by creating temporary tables.
+
+Numeric data types and summary functions
+50 XP
+Division
+100 XP
+Explore with division
+100 XP
+Summarize numeric columns
+100 XP
+Summarize group statistics
+100 XP
+Exploring distributions
+50 XP
+Truncate
+100 XP
+Generate series
+100 XP
+More summary functions
+50 XP
+Correlation
+100 XP
+Mean and Median
+100 XP
+Creating temporary tables
+50 XP
+Create a temp table
+100 XP
+Create a temp table to simplify a query
+100 XP
+Insert into a temp table
+100 XP

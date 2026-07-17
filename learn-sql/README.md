@@ -2,7 +2,7 @@
 
 DataCamp-style, instructor-led SQL courses you take through Claude Code. Each course runs against a local SQLite database. No internet, no signups.
 
-Five courses currently available:
+Six courses currently available:
 
 | # | Course | Lessons | XP | Dataset | Engine | Status |
 |---|---|---|---|---|---|---|
@@ -11,8 +11,9 @@ Five courses currently available:
 | 3 | Data Manipulation in SQL | 55 | 4700 | European Soccer | SQLite | 🟢 ready |
 | 4 | PostgreSQL Summary Stats and Window Functions | 44 | 3550 | Summer Olympic medals | **PostgreSQL** | 🟢 ready |
 | 5 | Functions for Manipulating Data in PostgreSQL | 50 | 4200 | Sakila DVD rental | **PostgreSQL** | 🟢 ready |
+| 6 | Exploratory Data Analysis in SQL | 57 | 4650 | Fortune 500 + StackOverflow + Evanston 311 | **PostgreSQL** | 🟢 ready |
 
-> Courses 4 and 5 run on **PostgreSQL**, not SQLite. Course 4 uses `crosstab()`/`ROLLUP`/`CUBE`/window frames; course 5 uses ARRAY columns, `INTERVAL`/`EXTRACT`/`DATE_TRUNC`, `tsvector` full-text search, and the `fuzzystrmatch` + `pg_trgm` extensions. Both need a local Postgres server (see §10).
+> Courses 4, 5 and 6 run on **PostgreSQL**, not SQLite. Course 4 uses `crosstab()`/`ROLLUP`/`CUBE`/window frames; course 5 uses ARRAY columns, `INTERVAL`/`EXTRACT`/`DATE_TRUNC`, `tsvector` full-text search, and the `fuzzystrmatch` + `pg_trgm` extensions; course 6 uses `percentile_disc()`/`corr()`, `generate_series`, `date_trunc`/`EXTRACT`, temp tables and text cleaning. All need a local Postgres server (see §10). Course 6 loads from local CSVs — **no internet/superuser needed** (unlike course 5).
 
 ---
 
@@ -65,22 +66,31 @@ learn-sql/
     │   │   └── setup.sh                   ← createdb + load helper
     │   ├── chapters/
     │   └── solutions/
-    └── functions-for-manipulating-data-in-postgres/   ← PostgreSQL, not SQLite
+    ├── functions-for-manipulating-data-in-postgres/   ← PostgreSQL, not SQLite
+    │   ├── topics/
+    │   ├── database/
+    │   │   ├── postgres-sakila-schema_v3.sql   ← tables + COPY-from-curl data load
+    │   │   ├── setup.sql                  ← types + schema + extensions orchestrator
+    │   │   └── setup.sh                   ← createdb + load helper
+    │   ├── chapters/
+    │   └── solutions/
+    └── exploratory-data-analysis-in-sql/          ← PostgreSQL, not SQLite
         ├── topics/
+        ├── csv/                           (ev311, fortune, stackexchange)
         ├── database/
-        │   ├── postgres-sakila-schema_v3.sql   ← tables + COPY-from-curl data load
-        │   ├── setup.sql                  ← types + schema + extensions orchestrator
-        │   └── setup.sh                   ← createdb + load helper
+        │   ├── setup.sql                  ← psql script (local \copy load)
+        │   ├── setup.sh                   ← createdb + load helper
+        │   └── sql_eda_dbcreate.sql       ← original DataCamp curl-based script (reference)
         ├── chapters/
         └── solutions/
 ```
-> Course 5 has no `csv/` dir — its data is fetched over the network by `COPY ... FROM PROGRAM 'curl …'` inside the schema file (needs a superuser + internet).
+> Course 5 has no `csv/` dir — its data is fetched over the network by `COPY ... FROM PROGRAM 'curl …'` inside the schema file (needs a superuser + internet). Course 6 keeps its CSVs locally and loads them with `\copy` — no network needed.
 
 ---
 
 ## 3. Picking a course
 
-Open `COURSE.md` — first line shows **Active course**. Edit it to switch between `intermediate-sql`, `joining-data-in-sql`, `data-manipulation-in-sql`, `postgres-summary-stats-window-function`, and `functions-for-manipulating-data-in-postgres`, or tell the instructor "switch to functions-for-manipulating-data-in-postgres".
+Open `COURSE.md` — first line shows **Active course**. Edit it to switch between `intermediate-sql`, `joining-data-in-sql`, `data-manipulation-in-sql`, `postgres-summary-stats-window-function`, `functions-for-manipulating-data-in-postgres`, and `exploratory-data-analysis-in-sql`, or tell the instructor "switch to exploratory-data-analysis-in-sql".
 
 ---
 
@@ -178,6 +188,11 @@ psql -d postgres_summary_stats -c "SELECT COUNT(*) FROM summer_medals;"
 psql -d sakila
 psql -d sakila -f path/to/file.sql
 psql -d sakila -c "SELECT COUNT(*) FROM film;"
+
+# Exploratory Data Analysis in SQL  (PostgreSQL — use psql, not sqlite3)
+psql -d eda
+psql -d eda -f path/to/file.sql
+psql -d eda -c "SELECT COUNT(*) FROM evanston311;"
 ```
 
 Inside the SQLite shell:
@@ -190,10 +205,10 @@ SELECT * FROM countries LIMIT 5;
 .quit
 ```
 
-Inside the psql shell (courses 4 & 5):
+Inside the psql shell (courses 4, 5 & 6):
 ```
 \dt
-\d summer_medals      -- course 4   (\d film for course 5)
+\d summer_medals      -- course 4   (\d film for course 5, \d evanston311 for course 6)
 \dT                   -- list user-defined types (course 5 Ch4)
 \dx                   -- list installed extensions (course 5 Ch4)
 SELECT * FROM summer_medals LIMIT 5;
@@ -263,6 +278,21 @@ User-defined types: `year` (DOMAIN), `mpaa_rating` (ENUM). Extensions: `fuzzystr
 
 **Data load needs a superuser + internet** — the schema pulls each table from DataCamp via `COPY ... FROM PROGRAM 'curl …'`.
 
+### `eda` — Fortune 500 + StackOverflow + Evanston 311 (**PostgreSQL**)
+Two dataset groups in one DB:
+```
+company (14) ─< tag_company (56) ─< stackoverflow (45238)   (join tags → question activity)
+                       └──────────< tag_type (61)
+fortune500 (500) ── company                                 (join on ticker)
+evanston311 (36431)  — standalone messy text/date table
+```
+- **fortune500** — `rank`, `title` PK, `name`, `ticker`, `sector`, `industry`, `employees`, `revenues`, `profits`, `assets`, `equity`, `revenues_change`, `profits_change`
+- **company** — `id` PK, `exchange`, `ticker`, `name`, `parent_id` (self-FK)
+- **tag_company** — `tag` PK, `company_id` FK; **stackoverflow** — `tag` FK, `date`, `question_count`, `question_pct`, `unanswered_count`, `unanswered_pct`; **tag_type** — `tag` FK, `type`
+- **evanston311** — `id` PK, `priority`, `source`, `category`, `date_created`, `date_completed` (timestamptz), `street`, `house_num`, `zip`, `description` (free text)
+
+Needs a running PostgreSQL server. Data loads from the **local** `csv/` files via `\copy` — no internet or superuser required.
+
 ### Rebuilding a DB
 
 ```bash
@@ -294,6 +324,13 @@ cd courses/functions-for-manipulating-data-in-postgres/database
 # or manually:
 #   createdb sakila
 #   psql -v ON_ERROR_STOP=1 -d sakila -f setup.sql
+
+# exploratory-data-analysis-in-sql  (PostgreSQL — local CSVs, no internet)
+cd courses/exploratory-data-analysis-in-sql/database
+./setup.sh                       # createdb eda + load (local \copy)
+# or manually:
+#   createdb eda
+#   psql -v ON_ERROR_STOP=1 -d eda -f setup.sql
 ```
 
 Row-count summary prints after each rebuild — verify all tables loaded.
@@ -342,6 +379,14 @@ Row-count summary prints after each rebuild — verify all tables loaded.
 | 3 | Parsing and Manipulating Text | 13 | 1150 |
 | 4 | Full-text Search and PostgreSQL Extensions | 14 | 1200 |
 
+### Exploratory Data Analysis in SQL (57 lessons, 4650 XP) — **PostgreSQL**
+| Ch | Title | Lessons | XP |
+|---|---|---|---|
+| 1 | What is a database? | 11 | 850 |
+| 2 | Summarizing and Aggregating Numeric Data | 15 | 1300 |
+| 3 | Exploring Categorical Data and Unstructured Text | 14 | 1100 |
+| 4 | Working with Dates and Timestamps | 17 | 1400 |
+
 Each chapter ends with a **capstone** (`chapters/<N>-<name>/capstone.sql`) — a realistic analysis brief combining everything in that chapter.
 
 ---
@@ -369,4 +414,5 @@ sqlite3 courses/joining-data-in-sql/database/joining-data-in-sql.db
 sqlite3 courses/data-manipulation-in-sql/database/data-manipulation-in-sql.db
 psql -d postgres_summary_stats          # course 4 — PostgreSQL
 psql -d sakila                          # course 5 — PostgreSQL
+psql -d eda                             # course 6 — PostgreSQL
 ```
